@@ -1,0 +1,32 @@
+{
+  "name": "zipbd",
+  "version": "1.0.0",
+  "description": "A Bangladesh-based zipcode package to get your Divisions, Districts, City, Sub-City with PostalCode in just seconds.",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "upgrade": "bunx --bun ncu -u && bun install",
+    "build": "rm -rf dist && tsc",
+    "push": "git add . && git commit -m \"update\" && git push",
+    "deploy": "rm -rf dist && tsc && vercel --prod"
+  },
+  "author": "Toufiq Hasan Kiron (github.com/kiron0)",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.0",
+    "prettier": "^3.6.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "http-status": "^2.1.0"
+  }
+}

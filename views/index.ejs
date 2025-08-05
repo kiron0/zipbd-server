@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZipBD - Complete Postal Codes for All 64 Districts</title>
+    <meta name="title" content="ZipBD - Complete Postal Codes for All 64 Districts">
+    <meta name="description" content="Free REST API for Bangladesh postal codes. Get complete postal code data for all 64 districts, cities, and sub-areas. Built with NodeJS, ExpressJS & TypeScript. Perfect for developers and businesses.">
+    <meta name="keywords" content="bangladesh postal code, zip code api, postal code database, bangladesh districts, dhaka postal code, chittagong postal code, rajshahi postal code, khulna postal code, barisal postal code, sylhet postal code, rangpur postal code, mymensingh postal code, rest api, developer api">
+    <meta name="author" content="Toufiq Hasan Kiron">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zipbd.vercel.app/">
+    <meta property="og:title" content="ZipBD - Complete Postal Codes for All 64 Districts">
+    <meta property="og:description" content="Free REST API for Bangladesh postal codes. Get complete postal code data for all 64 districts, cities, and sub-areas. Perfect for developers and businesses.">
+    <meta property="og:image" content="https://kiron.dev/android-chrome-512x512.png">
+    <meta property="og:site_name" content="ZipBD">
+    <meta property="og:locale" content="en_US">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zipbd.vercel.app/">
+    <meta property="twitter:title" content="ZipBD - Complete Postal Codes for All 64 Districts">
+    <meta property="twitter:description" content="Free REST API for Bangladesh postal codes. Get complete postal code data for all 64 districts, cities, and sub-areas. Perfect for developers and businesses.">
+    <meta property="twitter:image" content="https://kiron.dev/android-chrome-512x512.png">
+    <meta property="twitter:creator" content="@kiron0">
+
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ZipBD">
+
+    <link rel="canonical" href="https://zipbd.vercel.app/">
+
+    <link rel="shortcut icon" href="https://kiron.dev/android-chrome-512x512.png" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kiron.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kiron.dev/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kiron.dev/apple-touch-icon.png">
+    <link rel="manifest" href="https://kiron.dev/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ZipBD",
+      "description": "Free REST API for Bangladesh postal codes. Get complete postal code data for all 64 districts, cities, and sub-areas.",
+      "url": "https://zipbd.vercel.app/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Toufiq Hasan Kiron",
+        "url": "https://kiron.dev"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Toufiq Hasan Kiron",
+        "url": "https://kiron.dev"
+      },
+      "keywords": "bangladesh postal code, zip code api, postal code database, rest api",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true
+    }
+    </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+    body {
+      font-family: "Concert One", sans-serif;
+    }
+
+    .code-block {
+      background-color: #1f2937;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .endpoint {
+      background-color: #f3f4f6;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.25rem;
+    }
+
+    .success-badge {
+      background-color: #10b981;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .warning-badge {
+      background-color: #f59e0b;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+
+
+    .endpoint-header {
+      margin-bottom: 0.5rem;
+    }
+
+    .code-block {
+      position: relative;
+    }
+
+    .code-block a {
+      text-decoration: none;
+      cursor: pointer;
+      display: inline;
+    }
+
+    .code-block a:hover {
+      text-decoration: underline;
+    }
+
+    .response-content.collapsed {
+      display: none;
+    }
+
+    .response-content.expanded {
+      display: block;
+    }
+
+    .toggle-response {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <header class="bg-gradient-to-bl from-sky-500 to-indigo-500 text-white py-8">
+    <div class="container mx-auto px-4 md:px-0">
+      <div class="flex flex-col items-center justify-center text-center md:text-left">
+        <h1 class="text-3xl md:text-4xl font-bold">ZipBD</h1>
+        <p class="text-blue-100">Comprehensive postal code data for all 64 districts</p>
+        <nav class="mt-4" aria-label="Main navigation">
+          <ul class="flex flex-wrap justify-center gap-4 text-sm">
+            <li><a href="#overview" class="hover:text-blue-200 transition-colors underline">Overview</a></li>
+            <li><a href="#endpoints" class="hover:text-blue-200 transition-colors underline">API Endpoints</a></li>
+            <li><a href="#districts" class="hover:text-blue-200 transition-colors underline">Districts</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto px-4 md:px-0 py-8">
+    <section id="overview" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">📋 Overview</h2>
+      <p class="text-gray-600 mb-4">
+        A comprehensive REST API providing postal code data for all 64 districts of Bangladesh.
+        This API provides accurate and complete postal code information for all districts.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h3 class="font-bold text-blue-800">64 Districts</h3>
+          <p class="text-blue-600">All official Bangladesh districts</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h3 class="font-bold text-green-800">Complete Data</h3>
+          <p class="text-green-600">All postal codes included</p>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg">
+          <h3 class="font-bold text-purple-800">REST API</h3>
+          <p class="text-purple-600">Easy to integrate</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="endpoints" class="container mx-auto px-4 md:px-0 mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">🔗 API Endpoints</h2>
+
+            <div class="endpoint mb-8">
+                <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Get All Postal Data</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Retrieve all postal code data for all districts</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/all" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/all</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": [
+    {
+      "district": "Dhaka",
+      "cities": [
+        {
+          "city": "Dhaka City",
+          "subDistricts": [
+            {
+              "sub": "Gulshan-1",
+              "postalCode": "1212"
+            },
+            {
+              "sub": "Banani TSO",
+              "postalCode": "1213"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Chittagong",
+      "cities": [
+        {
+          "city": "Chittagong City",
+          "subDistricts": [
+            {
+              "sub": "Agrabad",
+              "postalCode": "4100"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "message": "All postal data retrieved successfully"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+            <div class="endpoint mb-8">
+        <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Search by District</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Search postal codes by district name (partial match supported)</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/district/dhaka" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/district/:district</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/district/dhaka</code></p>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": {
+    "district": "Dhaka",
+    "cities": [
+      {
+        "city": "Dhaka City",
+        "subDistricts": [
+          {
+            "sub": "Gulshan-1",
+            "postalCode": "1212"
+          },
+          {
+            "sub": "Banani TSO",
+            "postalCode": "1213"
+          },
+          {
+            "sub": "Dhanmondi",
+            "postalCode": "1209"
+          }
+        ]
+      },
+      {
+        "city": "Gazipur",
+        "subDistricts": [
+          {
+            "sub": "Gazipur Sadar",
+            "postalCode": "1700"
+          }
+        ]
+      }
+    ]
+  },
+  "message": "Found 2 cities in Dhaka"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+            <div class="endpoint mb-8">
+        <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Search by City</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Search postal codes by city name (partial match supported)</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/city/gulshan" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/city/:city</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/city/gulshan</code></p>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": [
+    {
+      "city": "Dhaka City",
+      "subDistricts": [
+        {
+          "sub": "Gulshan-1",
+          "postalCode": "1212"
+        },
+        {
+          "sub": "Gulshan-2",
+          "postalCode": "1213"
+        }
+      ]
+    }
+  ],
+  "message": "Found 1 cities with matching criteria"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+            <div class="endpoint mb-8">
+        <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Search by Sub-area</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Search postal codes by sub-area name (partial match supported)</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/sub/gulshan" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/sub/:sub</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/sub/gulshan</code></p>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": [
+    {
+      "city": "Dhaka City",
+      "subDistricts": [
+        {
+          "sub": "Gulshan-1",
+          "postalCode": "1212"
+        },
+        {
+          "sub": "Gulshan-2",
+          "postalCode": "1213"
+        }
+      ]
+    }
+  ],
+  "message": "Found 1 cities with matching sub-areas"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+            <div class="endpoint mb-8">
+        <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Search by Postal Code</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Search by postal code (partial match supported)</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/code/1212" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/code/:code</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/code/1212</code></p>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": [
+    {
+      "city": "Dhaka City",
+      "subDistricts": [
+        {
+          "sub": "Gulshan-1",
+          "postalCode": "1212"
+        }
+      ]
+    }
+  ],
+  "message": "Found 1 cities with matching postal codes"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+            <div class="endpoint mb-8">
+                <div class="endpoint-header">
+          <h3 class="font-bold text-lg">Multi-parameter Search</h3>
+        </div>
+        <p class="text-gray-600 mb-2">Search with multiple parameters simultaneously. Returns PostalEntry[] format with city, sub, and postalCode for each entry.</p>
+        <div class="code-block">
+          <code class="text-green-400">
+            <span class="text-gray-400">GET</span>
+            <a href="/api/v1/search?district=dhaka&city=gulshan&code=1212" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search?district=dhaka&city=gulshan&code=1212</a>
+          </code>
+        </div>
+        <div class="mt-2">
+          <span class="success-badge">200 OK</span>
+          <span class="warning-badge">JSON Response</span>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="font-semibold text-gray-700 mb-2">Search Examples:</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="bg-gray-50 p-3 rounded">
+              <h5 class="font-semibold text-sm mb-2">District Only:</h5>
+              <code class="text-xs">/api/v1/search?district=dhaka</code>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <h5 class="font-semibold text-sm mb-2">District + City:</h5>
+              <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan</code>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <h5 class="font-semibold text-sm mb-2">District + City + Sub:</h5>
+              <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan&sub=gulshan-1</code>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <h5 class="font-semibold text-sm mb-2">District + City + Code:</h5>
+              <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan&code=1212</code>
+            </div>
+          </div>
+
+          <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+          <div class="code-block response-container">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-400">JSON Response</span>
+              <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
+                <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+            <pre><code class="text-white response-content collapsed">{
+  "statusCode": 200,
+  "success": true,
+  "data": [
+    {
+      "city": "Gulshan",
+      "sub": "Gulshan-1",
+      "postalCode": "1212"
+    },
+    {
+      "city": "Gulshan",
+      "sub": "Gulshan-2",
+      "postalCode": "1213"
+    }
+  ],
+  "message": "Found 2 entries in Dhaka"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-6 p-4 bg-blue-50 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-blue-800 mb-2">📋 Response Structure</h4>
+        <ul class="text-sm text-blue-700 space-y-1">
+          <li><strong>statusCode:</strong> HTTP status code (200 for success)</li>
+          <li><strong>success:</strong> Boolean indicating API call success</li>
+          <li><strong>data:</strong> Contains the actual postal code information</li>
+          <li><strong>message:</strong> Descriptive message about the search results</li>
+        </ul>
+        </div>
+
+        <div>
+          <h5 class="font-semibold text-blue-800">📋 Data Structure Types</h5>
+        <ul class="text-sm text-blue-700 space-y-1">
+          <li><strong>District Search:</strong> Object with district and cities array</li>
+          <li><strong>City/Sub/Code Search:</strong> Array of city objects with subDistricts</li>
+          <li><strong>Multi-parameter Search:</strong> Array of PostalEntry objects (city, sub, postalCode)</li>
+          <li><strong>All Data:</strong> Array of district objects with cities</li>
+        </ul>
+        </div>
+      </div>
+
+    <div id="districts" class="mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">🗺️ Available Districts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+          <h3 class="font-bold text-blue-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+            Dhaka Division (13)
+          </h3>
+          <ul class="text-sm text-blue-600 space-y-1">
+            <li>Dhaka, Gazipur, Narayanganj</li>
+            <li>Tangail, Narsingdi, Kishoreganj</li>
+            <li>Manikganj, Munshiganj, Rajbari</li>
+            <li>Madaripur, Gopalganj, Faridpur</li>
+            <li>Shariatpur</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+          <h3 class="font-bold text-green-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+            Chittagong Division (11)
+          </h3>
+          <ul class="text-sm text-green-600 space-y-1">
+            <li>Chittagong, Comilla, Chandpur</li>
+            <li>Lakshmipur, Noakhali, Feni</li>
+            <li>Brahmanbaria, CoxsBazar</li>
+            <li>Rangamati, Bandarban, Khagrachari</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+          <h3 class="font-bold text-purple-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
+            Rajshahi Division (8)
+          </h3>
+          <ul class="text-sm text-purple-600 space-y-1">
+            <li>Rajshahi, Natore, Naogaon</li>
+            <li>Chapainawabganj, Pabna</li>
+            <li>Sirajganj, Bogra, Joypurhat</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg border border-orange-200">
+          <h3 class="font-bold text-orange-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+            Khulna Division (10)
+          </h3>
+          <ul class="text-sm text-orange-600 space-y-1">
+            <li>Khulna, Bagerhat, Satkhira</li>
+            <li>Jessore, Magura, Jhenaidah</li>
+            <li>Narail, Kushtia, Meherpur</li>
+            <li>Chuadanga</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-lg border border-red-200">
+          <h3 class="font-bold text-red-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+            Barisal Division (6)
+          </h3>
+          <ul class="text-sm text-red-600 space-y-1">
+            <li>Barisal, Bhola, Pirojpur</li>
+            <li>Jhalokati, Patuakhali, Barguna</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg border border-teal-200">
+          <h3 class="font-bold text-teal-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
+            Sylhet Division (4)
+          </h3>
+          <ul class="text-sm text-teal-600 space-y-1">
+            <li>Sylhet, Moulvibazar</li>
+            <li>Habiganj, Sunamganj</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-lg border border-indigo-200">
+          <h3 class="font-bold text-indigo-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-indigo-500 rounded-full mr-2"></span>
+            Rangpur Division (8)
+          </h3>
+          <ul class="text-sm text-indigo-600 space-y-1">
+            <li>Rangpur, Dinajpur, Kurigram</li>
+            <li>Lalmonirhat, Nilphamari</li>
+            <li>Panchagarh, Thakurgaon, Gaibandha</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-4 rounded-lg border border-pink-200">
+          <h3 class="font-bold text-pink-700 mb-3 flex items-center">
+            <span class="w-3 h-3 bg-pink-500 rounded-full mr-2"></span>
+            Mymensingh Division (4)
+          </h3>
+          <ul class="text-sm text-pink-600 space-y-1">
+            <li>Mymensingh, Jamalpur</li>
+            <li>Sherpur, Netrokona</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-8 px-4 md:px-0 mt-8">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">About ZipBD</h3>
+          <p class="text-gray-300 text-sm">
+            A comprehensive REST API providing accurate postal code data for all 64 districts of Bangladesh.
+            Perfect for developers, businesses, and applications requiring Bangladesh postal information.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li><a href="#overview" class="hover:text-white transition-colors">Overview</a></li>
+            <li><a href="#endpoints" class="hover:text-white transition-colors">API Endpoints</a></li>
+            <li><a href="#districts" class="hover:text-white transition-colors">Available Districts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Contact</h3>
+          <ul class="text-sm text-gray-300 space-y-2">
+            <li><a href="https://kiron.dev" target="_blank" rel="noopener" class="hover:text-white transition-colors">Developer Website</a></li>
+            <li><a href="https://github.com/kiron0" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub Profile</a></li>
+            <li><a href="mailto:hello@kiron.dev" class="hover:text-white transition-colors">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+        <p>&copy; <%= new Date().getFullYear() %> ZipBD. Built with ❤️ by <a href="https://kiron.dev" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300">Toufiq Hasan Kiron</a></p>
+        <p class="mt-2">Free and open source API for Bangladesh postal codes</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentDateElement = document.getElementById("current-date");
+      if (currentDateElement) {
+        currentDateElement.textContent = new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.activeElement?.blur();
+      }
+    });
+
+    function toggleResponse(button) {
+      try {
+        const container = button.closest('.response-container');
+        if (!container) {
+          console.error('Response container not found');
+          return;
+        }
+
+        const content = container.querySelector('.response-content');
+        if (!content) {
+          console.error('Response content not found');
+          return;
+        }
+
+        const icon = button.querySelector('.toggle-icon');
+        if (!icon) {
+          console.error('Toggle icon not found');
+          return;
+        }
+
+        const isCollapsed = content.classList.contains('collapsed');
+
+        if (isCollapsed) {
+          content.classList.remove('collapsed');
+          content.classList.add('expanded');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>';
+          button.title = 'Hide response';
+        } else {
+          content.classList.remove('expanded');
+          content.classList.add('collapsed');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>';
+          button.title = 'Show response';
+        }
+      } catch (error) {
+        console.error('Error in toggleResponse:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstResponse = document.querySelector('.response-content');
+      if (firstResponse) {
+        firstResponse.classList.add('collapsed');
+        firstResponse.classList.remove('expanded');
+      }
+    });
+  </script>
+</body>
+</html>
