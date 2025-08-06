@@ -17,9 +17,24 @@ A comprehensive REST API providing postal code data for all 64 districts of Bang
 ### Installation
 
 ```bash
-git clone https://github.com/kiron0/zipbd.git
-cd zipbd
-npm install
+git clone https://github.com/kiron0/zipbd-server.git
+cd zipbd-server
+bun install
+```
+
+### Environment Setup
+
+Create a `.env` file in the server directory:
+
+```bash
+touch .env
+```
+
+Add the following environment variables to your `.env` file:
+
+```env
+NODE_ENV=development
+PORT=8000
 ```
 
 ### Development
@@ -32,188 +47,141 @@ bun run dev
 
 ```bash
 bun run build
-bun start
-```
-
-## 📚 API Endpoints
-
-### Base URL
-```
-https://zipbd.vercel.app/api/v1
-```
-
-### 1. Get All Postal Data
-```http
-GET /api/v1/all
-```
-
-**Response:**
-```json
-{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "district": "Dhaka",
-      "cities": [
-        {
-          "city": "Dhaka City",
-          "subCities": [
-            {
-              "sub": "Gulshan-1",
-              "postalCode": "1212"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "message": "All postal data retrieved successfully"
-}
-```
-
-### 2. Search by District
-```http
-GET /api/v1/district/:district
-```
-
-**Example:**
-```http
-GET /api/v1/district/dhaka
-```
-
-**Response:**
-```json
-{
-  "statusCode": 200,
-  "success": true,
-  "data": {
-    "district": "Dhaka",
-    "cities": [
-      {
-        "city": "Dhaka City",
-        "subCities": [
-          {
-            "sub": "Gulshan-1",
-            "postalCode": "1212"
-          }
-        ]
-      }
-    ]
-  },
-  "message": "Found 2 cities in Dhaka"
-}
-```
-
-### 3. Search by City
-```http
-GET /api/v1/city/:city
-```
-
-**Example:**
-```http
-GET /api/v1/city/gulshan
-```
-
-**Response:**
-```json
-{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Dhaka City",
-      "subCities": [
-        {
-          "sub": "Gulshan-1",
-          "postalCode": "1212"
-        }
-      ]
-    }
-  ],
-  "message": "Found 1 cities with matching criteria"
-}
-```
-
-### 4. Search by Sub-area
-```http
-GET /api/v1/sub/:sub
-```
-
-**Example:**
-```http
-GET /api/v1/sub/gulshan
-```
-
-### 5. Search by Postal Code
-```http
-GET /api/v1/code/:code
-```
-
-**Example:**
-```http
-GET /api/v1/code/1212
-```
-
-### 6. Multi-parameter Search
-```http
-GET /api/v1/search?district=dhaka&city=gulshan&sub=gulshan-1&code=1212
-```
-
-**Search Examples:**
-- `?district=dhaka` - District only (partial match)
-- `?district=dhaka&city=gulshan` - District + City (partial city match)
-- `?district=dhaka&city=gulshan&sub=gulshan-1` - District + City + Sub (partial sub match)
-- `?district=dhaka&city=gulshan&code=1212` - District + City + Code (exact code match)
-- `?district=dhaka&city=gulshan&sub=gulshan-1&code=1212` - All parameters (exact match)
-
-**Response:**
-```json
-{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Gulshan",
-      "sub": "Gulshan-1",
-      "postalCode": "1212"
-    }
-  ],
-  "message": "Found 1 entry(ies) for the specified location"
-}
-```
-
-## 🔍 Search Logic
-
-### Parameter Validation
-- Only accepts valid parameters: `district`, `city`, `sub`, `code`
-- Rejects invalid parameters with clear error messages
-
-### Search Types
-1. **District Only**: Partial matching for district names
-2. **District + City**: Partial matching for cities within district
-3. **District + City + Sub**: Exact city + partial sub matching
-4. **District + City + Code**: Exact matching for all parameters
-5. **All Parameters**: Exact matching for district, city, sub, and code
-
-### Response Format
-All responses follow a consistent structure:
-```json
-{
-  "statusCode": 200,
-  "success": true,
-  "data": [...],
-  "message": "Descriptive message"
-}
 ```
 
 ## 🤝 Contributing
+
+We welcome contributions! Here's how you can help improve ZipBD:
+
+### General Contribution Guidelines
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+### 📮 Updating Postal Codes
+
+If you need to update or add postal codes, follow these steps:
+
+#### Step 1: Locate the Data File
+The postal code data is stored in the `src/utils/postal-code.ts` file. The data is organized by districts with each district containing an array of postal entries.
+
+#### Step 2: Understand the Data Structure
+The postal data follows this structure in the `postalData` object:
+
+```typescript
+export const postalData: DistrictData = {
+  "DistrictName": [
+    {
+      city: "City Name",
+      sub: "Sub-area Name",
+      postalCode: "1234"
+    },
+    {
+      city: "Another City",
+      sub: "Another Sub-area",
+      postalCode: "1235"
+    }
+  ]
+}
+```
+
+Each entry contains:
+- `city`: The city name
+- `sub`: The sub-area or specific location name
+- `postalCode`: The 4-digit postal code
+
+#### Step 3: Add or Update Postal Codes
+
+**To add a new postal entry to an existing district:**
+- Find the district in the `postalData` object
+- Add a new entry to the district's array:
+
+```typescript
+"Existing District": [
+  // ... existing entries
+  {
+    city: "New City",
+    sub: "New Sub-area",
+    postalCode: "1234"
+  }
+]
+```
+
+**To update an existing postal code:**
+- Find the specific entry in the district array
+- Update the `city`, `sub`, or `postalCode` values as needed
+
+#### Step 4: Validate Your Changes
+After updating the data:
+
+1. **Test the API locally:**
+   ```bash
+   bun run dev
+   ```
+
+2. **Test your new postal codes:**
+   ```bash
+   # Test district search
+   curl http://localhost:8000/api/v1/district/your-district-name
+
+   # Test city search
+   curl http://localhost:8000/api/v1/city/your-city-name
+
+   # Test postal code search
+   curl http://localhost:8000/api/v1/code/your-postal-code
+   ```
+
+3. **Verify search functionality:**
+   - Test partial matching for district/city names
+   - Test exact matching for postal codes
+   - Test multi-parameter searches
+
+#### Step 5: Submit Your Changes
+
+1. **Create a descriptive commit message:**
+   ```bash
+   git commit -m "Add postal codes for [District/City/Area]"
+   ```
+
+2. **Include in your PR description:**
+   - What postal codes you added/updated
+   - Which districts/cities were affected
+   - Any special considerations or notes
+
+#### Step 6: Quality Checklist
+
+Before submitting your PR, ensure:
+
+- [ ] All new postal codes are valid and accurate
+- [ ] Data structure follows the established format (flat array under each district)
+- [ ] API endpoints return correct results for your changes
+- [ ] No duplicate entries exist within the same district
+- [ ] District, city, and sub-area names are properly formatted
+- [ ] Postal codes are in the correct format (4 digits for Bangladesh)
+- [ ] Each entry has all three required fields: `city`, `sub`, and `postalCode`
+- [ ] The `postalData` object structure is maintained
+
+#### Common Issues to Avoid
+
+- **Duplicate entries**: Check existing data within the same district before adding
+- **Incorrect formatting**: Follow the exact TypeScript structure with `city`, `sub`, and `postalCode` fields
+- **Invalid postal codes**: Ensure codes are 4 digits and valid for Bangladesh
+- **Missing data**: Ensure all three required fields (`city`, `sub`, `postalCode`) are present
+- **Wrong data structure**: Don't use nested objects - use flat arrays under each district
+- **Inconsistent naming**: Use consistent naming conventions for districts, cities, and sub-areas
+
+#### Need Help?
+
+If you're unsure about the data structure or need help with your contribution:
+
+1. Check existing data entries for reference
+2. Open an issue describing what you want to add/update
+3. Ask questions in the issue or PR comments
+
+Your contributions help make ZipBD more comprehensive and accurate for everyone! 🚀
 
 ## 📄 License
 

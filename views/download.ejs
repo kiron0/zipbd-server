@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Download Postal Codes - ZipBD</title>
+    <meta name="title" content="Download Postal Codes - ZipBD">
+    <meta name="description" content="Download complete postal code datasets for Bangladesh in various formats. Get JSON, CSV, XML, and TXT files for all 64 districts.">
+    <meta name="keywords" content="bangladesh postal code download, zip code data, postal code database download, bangladesh districts data">
+    <meta name="author" content="Toufiq Hasan Kiron">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zipbd.vercel.app/download">
+    <meta property="og:title" content="Download Postal Codes - ZipBD">
+    <meta property="og:description" content="Download complete postal code datasets for Bangladesh in various formats.">
+    <meta property="og:image" content="https://kiron.dev/android-chrome-512x512.png">
+    <meta property="og:site_name" content="ZipBD">
+    <meta property="og:locale" content="en_US">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zipbd.vercel.app/download">
+    <meta property="twitter:title" content="Download Postal Codes - ZipBD">
+    <meta property="twitter:description" content="Download complete postal code datasets for Bangladesh in various formats.">
+    <meta property="twitter:image" content="https://kiron.dev/android-chrome-512x512.png">
+    <meta property="twitter:creator" content="@kiron0">
+
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ZipBD">
+
+    <link rel="canonical" href="https://zipbd.vercel.app/download">
+
+    <link rel="shortcut icon" href="https://kiron.dev/android-chrome-512x512.png" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kiron.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kiron.dev/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kiron.dev/apple-touch-icon.png">
+    <link rel="manifest" href="https://kiron.dev/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ZipBD Download",
+      "description": "Download complete postal code datasets for Bangladesh in various formats.",
+      "url": "https://zipbd.vercel.app/download",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Toufiq Hasan Kiron",
+        "url": "https://kiron.dev"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Toufiq Hasan Kiron",
+        "url": "https://kiron.dev"
+      },
+      "keywords": "bangladesh postal code download, zip code data, postal code database",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true
+    }
+    </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+    body {
+      font-family: "Concert One", sans-serif;
+    }
+
+    .download-card {
+      transition: all 0.3s ease;
+    }
+
+    .download-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-btn {
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <header class="bg-gradient-to-bl from-sky-500 to-indigo-500 text-white py-8">
+    <div class="container mx-auto px-4 md:px-0">
+      <div class="flex flex-col items-center justify-center text-center md:text-left">
+        <h1 class="text-3xl md:text-4xl font-bold">ZipBD</h1>
+        <p class="text-blue-100">Download Complete Postal Code Datasets</p>
+        <nav class="mt-4" aria-label="Main navigation">
+          <ul class="flex flex-wrap justify-center gap-4 text-sm">
+            <li><a href="/" class="hover:text-blue-200 transition-colors underline">Home</a></li>
+            <li><a href="#download" class="hover:text-blue-200 transition-colors underline">Download</a></li>
+            <li><a href="/" class="hover:text-blue-200 transition-colors underline">API Docs</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto px-4 md:px-0 py-8">
+    <section id="download" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">📥 Download Postal Code Data</h2>
+      <p class="text-gray-600 mb-6">
+        Download complete postal code datasets for Bangladesh in various formats.
+        All data is free to use and includes postal codes for all 64 districts.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Complete Dataset Downloads -->
+        <div class="download-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Complete Dataset</h3>
+            <p class="text-sm text-gray-600 mb-4">All postal codes for Bangladesh</p>
+            <a href="/api/v1/download?format=json" class="download-btn inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+              Download JSON
+            </a>
+          </div>
+        </div>
+
+        <div class="download-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">CSV Format</h3>
+            <p class="text-sm text-gray-600 mb-4">Comma-separated values</p>
+            <a href="/api/v1/download?format=csv" class="download-btn inline-block bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
+              Download CSV
+            </a>
+          </div>
+        </div>
+
+        <div class="download-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">XML Format</h3>
+            <p class="text-sm text-gray-600 mb-4">Structured XML data</p>
+            <a href="/api/v1/download?format=xml" class="download-btn inline-block bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 transition-colors">
+              Download XML
+            </a>
+          </div>
+        </div>
+
+        <div class="download-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">TXT Format</h3>
+            <p class="text-sm text-gray-600 mb-4">Plain text format</p>
+            <a href="/api/v1/download?format=txt" class="download-btn inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-orange-700 transition-colors">
+              Download TXT
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- District-specific Downloads -->
+      <div class="bg-gray-50 rounded-lg p-6">
+        <h3 class="text-xl font-bold mb-4 text-gray-800">🏛️ District-Specific Downloads</h3>
+        <p class="text-gray-600 mb-6">
+          Download postal codes for specific districts. Select a district to get filtered data.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Popular Districts -->
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Dhaka</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=dhaka" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=dhaka" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Chittagong</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=chittagong" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=chittagong" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Sylhet</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=sylhet" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=sylhet" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Rajshahi</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=rajshahi" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=rajshahi" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Khulna</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=khulna" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=khulna" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 class="font-semibold text-gray-800 mb-2">Barisal</h4>
+            <div class="flex gap-2">
+              <a href="/api/v1/download?format=json&district=barisal" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">JSON</a>
+              <a href="/api/v1/download?format=csv&district=barisal" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded hover:bg-green-200">CSV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Information -->
+    <section class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">📊 Data Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">64</div>
+          <div class="text-gray-600">Districts</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-green-600 mb-2">500+</div>
+          <div class="text-gray-600">Cities</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-600 mb-2">1000+</div>
+          <div class="text-gray-600">Postal Codes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usage Information -->
+    <section class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">ℹ️ Usage Information</h2>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800">Free to Use</h3>
+            <p class="text-gray-600 text-sm">All data is completely free for personal and commercial use.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800">Multiple Formats</h3>
+            <p class="text-gray-600 text-sm">Download in JSON, CSV, XML, or TXT formats for your needs.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800">Up-to-Date</h3>
+            <p class="text-gray-600 text-sm">Data is regularly updated with the latest postal code information.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+            <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800">No Authentication</h3>
+            <p class="text-gray-600 text-sm">Direct downloads without any API keys or authentication required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="bg-gray-800 text-white py-8 mt-12">
+    <div class="container mx-auto px-4 md:px-0">
+      <div class="flex flex-col items-center justify-center text-center">
+        <div class="flex items-center space-x-2 mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span class="text-lg font-medium">ZipBD</span>
+        </div>
+        <p class="text-gray-300 mb-4">Made with ❤️ for Bangladesh</p>
+        <div class="text-sm text-gray-400">
+          &copy; <%= new Date().getFullYear() %> ZipBD. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+              link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                  targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              });
+            });
+          });
+        </script>
+</body>
+</html>

@@ -6538,22 +6538,22 @@ export const postalData: DistrictData = {
       postalCode: "4511",
     },
     {
-      city: "kaptai",
+      city: "Kaptai",
       sub: "Kaptai",
       postalCode: "4530",
     },
     {
-      city: "kaptai",
+      city: "Kaptai",
       sub: "Chandraghona",
       postalCode: "4531",
     },
     {
-      city: "kaptai",
+      city: "Kaptai",
       sub: "Kaptai Project",
       postalCode: "4532",
     },
     {
-      city: "kaptai",
+      city: "Kaptai",
       sub: "Kaptai Nuton Bazar",
       postalCode: "4533",
     },

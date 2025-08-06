@@ -22,6 +22,10 @@ app.get("/", async (req: Request, res: Response) => {
   res.render("index");
 });
 
+app.get("/download", async (req: Request, res: Response) => {
+  res.render("download");
+});
+
 app.use((req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.NOT_FOUND,

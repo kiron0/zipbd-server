@@ -29,35 +29,6 @@ function groupByCityAndFormat(entries: PostalEntry[]): CityInfo[] {
   }));
 }
 
-function formatSearchResultsWithPostalCodes(entries: PostalEntry[]): Array<{
-  city: string;
-  sub: string;
-  postalCode: string;
-}> {
-  return entries.map((entry) => ({
-    city: entry.city,
-    sub: entry.sub,
-    postalCode: entry.postalCode,
-  }));
-}
-
-function formatSearchResultsWithDistrict(
-  entries: PostalEntry[],
-  district: string,
-): Array<{
-  district: string;
-  city: string;
-  sub: string;
-  postalCode: string;
-}> {
-  return entries.map((entry) => ({
-    district,
-    city: entry.city,
-    sub: entry.sub,
-    postalCode: entry.postalCode,
-  }));
-}
-
 export function filterEntriesBy(
   field: keyof PostalEntry,
   value: string,
@@ -124,7 +95,6 @@ export async function searchByCityService(
   }
 
   const results = filterEntriesBy("city", city);
-
   const resultsArray = Array.isArray(results) ? results : [results];
 
   return {
@@ -144,7 +114,6 @@ export async function searchBySubService(
   }
 
   const results = filterEntriesBy("sub", sub);
-
   const resultsArray = Array.isArray(results) ? results : [results];
 
   return {
@@ -164,7 +133,6 @@ export async function searchByCodeService(
   }
 
   const results = filterEntriesBy("postalCode", code);
-
   const resultsArray = Array.isArray(results) ? results : [results];
 
   return {
@@ -190,110 +158,81 @@ export async function getAllDataService(): Promise<{
   };
 }
 
-async function searchByDistrict(district: string): Promise<PostalEntry[]> {
-  const result = await searchByDistrictBase(district);
-  return result.subCities;
+export async function getAllDistrictsService(): Promise<{
+  data: string[];
+  message: string;
+}> {
+  const districts = Object.keys(postalData);
+  return {
+    data: districts,
+    message: `Found ${districts.length} districts`,
+  };
 }
 
-async function searchByDistrictForSearch(district: string): Promise<
-  Array<{
-    district: string;
-    city: string;
-    sub: string;
-    postalCode: string;
-  }>
-> {
-  const entries = await searchByDistrict(district);
-  return formatSearchResultsWithDistrict(entries, district);
-}
-
-async function searchByCityForSearch(city: string): Promise<
-  Array<{
-    district: string;
-    city: string;
-    sub: string;
-    postalCode: string;
-  }>
-> {
-  const results = filterEntriesBy("city", city);
-  const resultsArray = Array.isArray(results) ? results : [results];
-
-  // Find district for each entry
-  const entriesWithDistrict: Array<{
-    district: string;
-    city: string;
-    sub: string;
-    postalCode: string;
-  }> = [];
-
-  for (const entry of resultsArray) {
-    for (const [districtName, districtEntries] of Object.entries(postalData)) {
-      if (
-        districtEntries.some(
-          (districtEntry) =>
-            districtEntry.city === entry.city &&
-            districtEntry.sub === entry.sub &&
-            districtEntry.postalCode === entry.postalCode,
-        )
-      ) {
-        entriesWithDistrict.push({
-          district: districtName,
-          city: entry.city,
-          sub: entry.sub,
-          postalCode: entry.postalCode,
-        });
-        break;
-      }
-    }
+export async function getCitiesByDistrictService(district: string): Promise<{
+  data: string[];
+  message: string;
+}> {
+  if (!district || typeof district !== "string") {
+    throw new Error("District is required");
   }
 
-  return entriesWithDistrict;
-}
+  const lowerDistrict = district.toLowerCase();
+  const matchedKey = Object.keys(postalData).find(
+    (key) => key.toLowerCase() === lowerDistrict,
+  );
 
-async function searchBySubForSearch(sub: string): Promise<
-  Array<{
-    district: string;
-    city: string;
-    sub: string;
-    postalCode: string;
-  }>
-> {
-  const results = filterEntriesBy("sub", sub);
-  const resultsArray = Array.isArray(results) ? results : [results];
-
-  // Find district for each entry
-  const entriesWithDistrict: Array<{
-    district: string;
-    city: string;
-    sub: string;
-    postalCode: string;
-  }> = [];
-
-  for (const entry of resultsArray) {
-    for (const [districtName, districtEntries] of Object.entries(postalData)) {
-      if (
-        districtEntries.some(
-          (districtEntry) =>
-            districtEntry.city === entry.city &&
-            districtEntry.sub === entry.sub &&
-            districtEntry.postalCode === entry.postalCode,
-        )
-      ) {
-        entriesWithDistrict.push({
-          district: districtName,
-          city: entry.city,
-          sub: entry.sub,
-          postalCode: entry.postalCode,
-        });
-        break;
-      }
-    }
+  if (!matchedKey) {
+    return { data: [], message: "District not found" };
   }
 
-  return entriesWithDistrict;
+  const districtEntries = postalData[matchedKey as keyof DistrictData];
+  const cities = [...new Set(districtEntries.map((entry) => entry.city))];
+
+  return {
+    data: cities,
+    message: `Found ${cities.length} cities in ${matchedKey}`,
+  };
 }
 
-async function searchByCodeForSearch(code: string): Promise<
+export async function getSubCitiesByDistrictService(
+  district: string,
+  city: string,
+): Promise<{
+  data: PostalEntry[];
+  message: string;
+}> {
+  if (!district || typeof district !== "string" || !district.trim()) {
+    throw new Error("District is required");
+  }
+
+  if (!city || typeof city !== "string" || !city.trim()) {
+    throw new Error("City is required");
+  }
+
+  const lowerDistrict = district.trim().toLowerCase();
+  const lowerCity = city.trim().toLowerCase();
+
+  const matchedDistrict = Object.keys(postalData).find(
+    (key) => key.toLowerCase() === lowerDistrict,
+  );
+
+  if (!matchedDistrict) {
+    return { data: [], message: "District not found" };
+  }
+
+  const districtEntries = postalData[matchedDistrict as keyof DistrictData];
+  const subCities = districtEntries.filter(
+    (entry) => entry.city.toLowerCase() === lowerCity,
+  );
+
+  return {
+    data: subCities,
+    message: `Found ${subCities.length} sub-cities in ${matchedDistrict}`,
+  };
+}
+
+async function findEntriesWithDistrict(entries: PostalEntry[]): Promise<
   Array<{
     district: string;
     city: string;
@@ -301,10 +240,6 @@ async function searchByCodeForSearch(code: string): Promise<
     postalCode: string;
   }>
 > {
-  const results = filterEntriesBy("postalCode", code);
-  const resultsArray = Array.isArray(results) ? results : [results];
-
-  // Find district for each entry
   const entriesWithDistrict: Array<{
     district: string;
     city: string;
@@ -312,7 +247,7 @@ async function searchByCodeForSearch(code: string): Promise<
     postalCode: string;
   }> = [];
 
-  for (const entry of resultsArray) {
+  for (const entry of entries) {
     for (const [districtName, districtEntries] of Object.entries(postalData)) {
       if (
         districtEntries.some(
@@ -348,6 +283,7 @@ export async function searchService(
     return { data: null, message: "No valid search parameters provided" };
   }
 
+  // Handle district-only search
   if (validParams.length === 1 && validParams[0][0] === "district") {
     const district = validParams[0][1];
     const lowerDistrict = district.toLowerCase();
@@ -363,9 +299,17 @@ export async function searchService(
     }
 
     const districtEntries = postalData[matchedDistrict as keyof DistrictData];
+
+    const entriesWithDistrict = districtEntries.map((entry) => ({
+      district: matchedDistrict,
+      city: entry.city,
+      sub: entry.sub,
+      postalCode: entry.postalCode,
+    }));
+
     return {
-      data: districtEntries,
-      message: `Found ${districtEntries.length} entries in ${matchedDistrict}`,
+      data: entriesWithDistrict,
+      message: `Found ${entriesWithDistrict.length} entries in ${matchedDistrict}`,
     };
   }
 
@@ -395,9 +339,16 @@ export async function searchService(
       };
     }
 
+    const entriesWithDistrict = cityEntries.map((entry) => ({
+      district: districtResult.district,
+      city: entry.city,
+      sub: entry.sub,
+      postalCode: entry.postalCode,
+    }));
+
     return {
-      data: cityEntries,
-      message: `Found ${cityEntries.length} entries in ${districtResult.district}`,
+      data: entriesWithDistrict,
+      message: `Found ${entriesWithDistrict.length} entries in ${districtResult.district}`,
     };
   }
 
@@ -417,7 +368,9 @@ export async function searchService(
     }
 
     const cityEntries = districtResult.subCities.filter(
-      (entry) => entry.city.toLowerCase() === city.toLowerCase(),
+      (entry) =>
+        entry.city.toLowerCase() === city.toLowerCase() ||
+        entry.city.toLowerCase().includes(city.toLowerCase()),
     );
 
     if (cityEntries.length === 0) {
@@ -427,133 +380,39 @@ export async function searchService(
       };
     }
 
-    const matchingEntries = cityEntries.filter((entry) =>
-      entry.sub.toLowerCase().includes(sub.toLowerCase()),
-    );
-
-    if (matchingEntries.length === 0) {
-      return {
-        data: null,
-        message: "Sub-area not found in the specified city and district",
-      };
-    }
-
-    return {
-      data: matchingEntries,
-      message: `Found ${matchingEntries.length} entries in ${cityEntries[0].city}, ${districtResult.district}`,
-    };
-  }
-
-  if (
-    validParams.length === 3 &&
-    validParams.some(([key]) => key === "district") &&
-    validParams.some(([key]) => key === "city") &&
-    validParams.some(([key]) => key === "code")
-  ) {
-    const district = validParams.find(([key]) => key === "district")![1];
-    const city = validParams.find(([key]) => key === "city")![1];
-    const code = validParams.find(([key]) => key === "code")![1];
-
-    const districtResult = await searchByDistrictBase(district);
-    if (districtResult.subCities.length === 0) {
-      return { data: null, message: "District not found" };
-    }
-
-    if (!code || code.trim() === "") {
-      const cityEntries = districtResult.subCities.filter(
-        (entry) => entry.city.toLowerCase() === city.toLowerCase(),
-      );
-
-      if (cityEntries.length === 0) {
-        return {
-          data: null,
-          message: "City not found in the specified district",
-        };
-      }
-
-      return {
-        data: cityEntries,
-        message: `Found ${cityEntries.length} entries for ${cityEntries[0].city} in ${districtResult.district}`,
-      };
-    }
-
-    const matchingEntries = districtResult.subCities.filter(
+    const subEntries = cityEntries.filter(
       (entry) =>
-        entry.city.toLowerCase() === city.toLowerCase() &&
-        entry.postalCode === code,
+        entry.sub.toLowerCase() === sub.toLowerCase() ||
+        entry.sub.toLowerCase().includes(sub.toLowerCase()),
     );
 
-    if (matchingEntries.length === 0) {
+    if (subEntries.length === 0) {
       return {
         data: null,
-        message: "Postal code not found for the specified city and district",
+        message: "Sub-area not found in the specified city",
       };
     }
 
-    return {
-      data: matchingEntries,
-      message: `Found ${matchingEntries.length} entry(ies) for postal code ${code}`,
-    };
-  }
-
-  if (
-    validParams.length === 4 &&
-    validParams.some(([key]) => key === "district") &&
-    validParams.some(([key]) => key === "city") &&
-    validParams.some(([key]) => key === "sub") &&
-    validParams.some(([key]) => key === "code")
-  ) {
-    const district = validParams.find(([key]) => key === "district")![1];
-    const city = validParams.find(([key]) => key === "city")![1];
-    const sub = validParams.find(([key]) => key === "sub")![1];
-    const code = validParams.find(([key]) => key === "code")![1];
-
-    const districtResult = await searchByDistrictBase(district);
-    if (districtResult.subCities.length === 0) {
-      return { data: null, message: "District not found" };
-    }
-
-    const matchingEntries = districtResult.subCities.filter(
-      (entry) =>
-        entry.city.toLowerCase() === city.toLowerCase() &&
-        entry.sub.toLowerCase() === sub.toLowerCase() &&
-        entry.postalCode === code,
-    );
-
-    if (matchingEntries.length === 0) {
-      return {
-        data: null,
-        message: "Postal code not found for the specified location",
-      };
-    }
+    const entriesWithDistrict = subEntries.map((entry) => ({
+      district: districtResult.district,
+      city: entry.city,
+      sub: entry.sub,
+      postalCode: entry.postalCode,
+    }));
 
     return {
-      data: matchingEntries,
-      message: `Found ${matchingEntries.length} entry(ies) for the specified location`,
+      data: entriesWithDistrict,
+      message: `Found ${entriesWithDistrict.length} entries in ${districtResult.district}`,
     };
   }
 
   const searchPromises = validParams.map(async ([key, value]) => {
     try {
-      let result;
-      switch (key) {
-        case "district":
-          result = await searchByDistrictForSearch(value);
-          break;
-        case "city":
-          result = await searchByCityForSearch(value);
-          break;
-        case "sub":
-          result = await searchBySubForSearch(value);
-          break;
-        case "code":
-          result = await searchByCodeForSearch(value);
-          break;
-        default:
-          return { key, success: false, error: "Invalid search parameter" };
-      }
+      const results = filterEntriesBy(key as keyof PostalEntry, value);
+      const resultsArray = Array.isArray(results) ? results : [results];
+      const entriesWithDistrict = await findEntriesWithDistrict(resultsArray);
 
-      return { key, success: true, result };
+      return { key, success: true, result: entriesWithDistrict };
     } catch (error) {
       return {
         key,
@@ -582,10 +441,151 @@ export async function searchService(
     }
   });
 
+  const uniqueResults = allResults.filter((item, index, self) => {
+    const key = `${item.district}-${item.city}-${item.sub}-${item.postalCode}`;
+    return (
+      index ===
+      self.findIndex(
+        (t) => `${t.district}-${t.city}-${t.sub}-${t.postalCode}` === key,
+      )
+    );
+  });
+
   return {
-    data: hasValidResults ? allResults : null,
+    data: hasValidResults ? uniqueResults : null,
     message: hasValidResults
       ? "Search completed successfully"
       : "No results found for the provided parameters",
   };
+}
+
+export async function downloadDataService(
+  format: string = "json",
+  district?: string,
+  city?: string,
+): Promise<{
+  data: any;
+  message: string;
+  contentType: string;
+  filename: string;
+}> {
+  // Get all data or filter by district/city
+  let dataToExport: any;
+
+  if (district) {
+    const districtResult = await searchByDistrictBase(district);
+    if (districtResult.subCities.length === 0) {
+      throw new Error("District not found");
+    }
+
+    if (city) {
+      // Filter by both district and city
+      const cityEntries = districtResult.subCities.filter(
+        (entry) =>
+          entry.city.toLowerCase() === city.toLowerCase() ||
+          entry.city.toLowerCase().includes(city.toLowerCase()),
+      );
+
+      if (cityEntries.length === 0) {
+        throw new Error("City not found in the specified district");
+      }
+
+      dataToExport = cityEntries.map((entry) => ({
+        district: districtResult.district,
+        city: entry.city,
+        sub: entry.sub,
+        postalCode: entry.postalCode,
+      }));
+    } else {
+      // Filter by district only
+      dataToExport = districtResult.subCities.map((entry) => ({
+        district: districtResult.district,
+        city: entry.city,
+        sub: entry.sub,
+        postalCode: entry.postalCode,
+      }));
+    }
+  } else {
+    // Get all data
+    dataToExport = Object.entries(postalData).flatMap(([district, entries]) =>
+      entries.map((entry) => ({
+        district,
+        city: entry.city,
+        sub: entry.sub,
+        postalCode: entry.postalCode,
+      })),
+    );
+  }
+
+  const timestamp = new Date().toISOString().split("T")[0];
+
+  switch (format.toLowerCase()) {
+    case "csv":
+      const csvHeaders = "District,City,Sub-City,Postal Code\n";
+      const csvData = dataToExport
+        .map(
+          (entry: any) =>
+            `"${entry.district}","${entry.city}","${entry.sub}","${entry.postalCode}"`,
+        )
+        .join("\n");
+      const csvContent = csvHeaders + csvData;
+
+      return {
+        data: csvContent,
+        message: `Downloaded ${dataToExport.length} records in CSV format`,
+        contentType: "text/csv",
+        filename: `postal-codes-${district || "all"}-${timestamp}.csv`,
+      };
+
+    case "xml":
+      const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<postalCodes>
+  ${dataToExport
+    .map(
+      (entry: any) => `
+  <entry>
+    <district>${entry.district}</district>
+    <city>${entry.city}</city>
+    <sub>${entry.sub}</sub>
+    <postalCode>${entry.postalCode}</postalCode>
+  </entry>`,
+    )
+    .join("")}
+</postalCodes>`;
+
+      return {
+        data: xmlContent,
+        message: `Downloaded ${dataToExport.length} records in XML format`,
+        contentType: "application/xml",
+        filename: `postal-codes-${district || "all"}-${timestamp}.xml`,
+      };
+
+    case "txt":
+      const txtContent = dataToExport
+        .map(
+          (entry: any) =>
+            `${entry.district}\t${entry.city}\t${entry.sub}\t${entry.postalCode}`,
+        )
+        .join("\n");
+
+      return {
+        data: txtContent,
+        message: `Downloaded ${dataToExport.length} records in TXT format`,
+        contentType: "text/plain",
+        filename: `postal-codes-${district || "all"}-${timestamp}.txt`,
+      };
+
+    case "json":
+    default:
+      return {
+        data: {
+          total: dataToExport.length,
+          timestamp: new Date().toISOString(),
+          data: dataToExport,
+        },
+        message: `Downloaded ${dataToExport.length} records in JSON format`,
+        contentType: "application/json",
+        filename: `postal-codes-${district || "all"}-${timestamp}.json`,
+      };
+  }
 }

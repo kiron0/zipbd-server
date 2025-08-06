@@ -5,7 +5,7 @@ import { sendResponse } from "./response";
 
 const DEFAULT_TIME_LIMIT_IN_MINUTES =
   config.env === "production" ? 1 : Infinity;
-const DEFAULT_MAX_REQUESTS = config.env === "production" ? 30 : Infinity;
+const DEFAULT_MAX_REQUESTS = config.env === "production" ? 60 : Infinity;
 
 export const rateLimiter = (
   timeLimitInMinutes = DEFAULT_TIME_LIMIT_IN_MINUTES,

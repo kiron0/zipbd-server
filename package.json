@@ -1,5 +1,5 @@
 {
-  "name": "zipbd",
+  "name": "zipbd-server",
   "version": "1.0.0",
   "description": "A Bangladesh-based zipcode package to get your Divisions, Districts, City, Sub-City with PostalCode in just seconds.",
   "scripts": {
