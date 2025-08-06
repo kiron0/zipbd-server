@@ -15,7 +15,7 @@ export interface SubDistrictInfo {
 
 export interface CityInfo {
   city: string;
-  subDistricts: SubDistrictInfo[];
+  subCities: SubDistrictInfo[];
 }
 
 export interface DistrictInfo {
@@ -42,7 +42,7 @@ export interface SearchServiceResponse {
 
 export interface BaseSearchResult {
   district: string;
-  subDistricts: PostalEntry[];
+  subCities: PostalEntry[];
 }
 
 export type FilterResult = PostalEntry | PostalEntry[];

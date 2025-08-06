@@ -58,7 +58,7 @@ GET /api/v1/all
       "cities": [
         {
           "city": "Dhaka City",
-          "subDistricts": [
+          "subCities": [
             {
               "sub": "Gulshan-1",
               "postalCode": "1212"
@@ -92,7 +92,7 @@ GET /api/v1/district/dhaka
     "cities": [
       {
         "city": "Dhaka City",
-        "subDistricts": [
+        "subCities": [
           {
             "sub": "Gulshan-1",
             "postalCode": "1212"
@@ -123,7 +123,7 @@ GET /api/v1/city/gulshan
   "data": [
     {
       "city": "Dhaka City",
-      "subDistricts": [
+      "subCities": [
         {
           "sub": "Gulshan-1",
           "postalCode": "1212"
