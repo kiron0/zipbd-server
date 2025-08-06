@@ -1,9 +1,11 @@
 import cors from "cors";
 import "dotenv/config";
 import express, { Application, Request, Response } from "express";
+import httpStatus from "http-status";
 import path from "path";
-import postalRoutes from "./app/routes/postal.route";
+import { postalRoutes } from "./app/routes/postal.route";
 import { errorHandler } from "./middleware/errorHandler";
+import { sendResponse } from "./utils";
 
 const app: Application = express();
 
@@ -21,10 +23,11 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.use((req: Request, res: Response) => {
-  res.status(404).json({
+  sendResponse(res, {
+    statusCode: httpStatus.NOT_FOUND,
     success: false,
-    message: "Route not found",
-    path: req.originalUrl,
+    message:
+      "Not Found. The resource you are looking for does not exist on this server. Please check the URL or refer to the API documentation.",
   });
 });
 

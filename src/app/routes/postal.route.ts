@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { rateLimiter } from "../../utils/rate-limiter";
 import {
   getAllData,
   search,
@@ -9,6 +10,8 @@ import {
 } from "../modules/controllers/postal.controller";
 
 const router = Router();
+
+router.use(rateLimiter());
 
 router.get("/district/:district", searchByDistrict);
 
@@ -22,4 +25,4 @@ router.get("/search", search);
 
 router.get("/all", getAllData);
 
-export default router;
+export { router as postalRoutes };

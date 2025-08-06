@@ -1,6 +1,5 @@
 import httpStatus from "http-status";
-import catchAsync from "../../../utils/catch-async";
-import { sendResponse } from "../../../utils/response";
+import { catchAsync, sendResponse } from "../../../utils";
 import {
   getAllDataService,
   searchByCityService,

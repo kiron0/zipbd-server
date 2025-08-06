@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { sendResponse } from "../utils";
 
 export interface CustomError extends Error {
   statusCode?: number;
@@ -21,7 +22,8 @@ export const errorHandler = (
     timestamp: new Date().toISOString(),
   });
 
-  res.status(statusCode).json({
+  sendResponse(res, {
+    statusCode,
     success: false,
     message,
     error: process.env.NODE_ENV === "development" ? error.stack : undefined,
