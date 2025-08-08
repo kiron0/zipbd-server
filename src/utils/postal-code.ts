@@ -249,7 +249,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Tejgaon Industrial Area",
-      sub: "Dhaka Politechnic",
+      sub: "Dhaka Polytechnic",
       postalCode: "1208",
     },
     {
@@ -432,13 +432,13 @@ export const postalData: DistrictData = {
       postalCode: "2338",
     },
     {
-      city: "Bhairob",
+      city: "Bhairab",
       sub: "Bhairab",
       postalCode: "2350",
     },
     {
-      city: "Hossenpur",
-      sub: "Hossenpur",
+      city: "Hossainpur",
+      sub: "Hossainpur",
       postalCode: "2320",
     },
     {
@@ -468,7 +468,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Kishoreganj Sadar",
-      sub: "Kishoreganj S.Mills",
+      sub: "Kishoreganj Sugar Mills",
       postalCode: "2301",
     },
     {
@@ -493,7 +493,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Mithamoin",
-      sub: "MIthamoin",
+      sub: "Mithamoin",
       postalCode: "2370",
     },
     {
@@ -507,8 +507,8 @@ export const postalData: DistrictData = {
       postalCode: "2360",
     },
     {
-      city: "Ostagram",
-      sub: "Ostagram",
+      city: "Austagram",
+      sub: "Austagram",
       postalCode: "2380",
     },
     {
@@ -517,8 +517,8 @@ export const postalData: DistrictData = {
       postalCode: "2326",
     },
     {
-      city: "Tarial",
-      sub: "Tarial",
+      city: "Tarail",
+      sub: "Tarail",
       postalCode: "2316",
     },
   ],
@@ -706,17 +706,17 @@ export const postalData: DistrictData = {
       postalCode: "1464",
     },
     {
-      city: "Siddirganj",
-      sub: "Siddirganj",
+      city: "Siddhirganj",
+      sub: "Siddhirganj",
       postalCode: "1430",
     },
     {
-      city: "Siddirganj",
+      city: "Siddhirganj",
       sub: "Adamjeenagar",
       postalCode: "1431",
     },
     {
-      city: "Siddirganj",
+      city: "Siddhirganj",
       sub: "LN Mills",
       postalCode: "1432",
     },
@@ -845,7 +845,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Srinagar",
-      sub: "Vaggyakul SO",
+      sub: "Bhagyakul SO",
       postalCode: "1556",
     },
     {
@@ -855,7 +855,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Srinagar",
-      sub: "Bhaggyakul",
+      sub: "Bhagyakul",
       postalCode: "1558",
     },
     {
@@ -921,32 +921,32 @@ export const postalData: DistrictData = {
       postalCode: "1652",
     },
     {
-      city: "Narshingdi Sadar",
-      sub: "Narshingdi Sadar",
+      city: "Narsingdi Sadar",
+      sub: "Narsingdi Sadar",
       postalCode: "1600",
     },
     {
-      city: "Narshingdi Sadar",
+      city: "Narsingdi Sadar",
       sub: "UMC Jute Mills",
       postalCode: "1601",
     },
     {
-      city: "Narshingdi Sadar",
-      sub: "Narshingdi College",
+      city: "Narsingdi Sadar",
+      sub: "Narsingdi College",
       postalCode: "1602",
     },
     {
-      city: "Narshingdi Sadar",
+      city: "Narsingdi Sadar",
       sub: "Panchdona",
       postalCode: "1603",
     },
     {
-      city: "Narshingdi Sadar",
+      city: "Narsingdi Sadar",
       sub: "Madhabdi",
       postalCode: "1604",
     },
     {
-      city: "Narshingdi Sadar",
+      city: "Narsingdi Sadar",
       sub: "Karimpur",
       postalCode: "1605",
     },
@@ -1018,8 +1018,8 @@ export const postalData: DistrictData = {
       postalCode: "1704",
     },
     {
-      city: "Kaliakaar",
-      sub: "Kaliakaar",
+      city: "Kaliakair",
+      sub: "Kaliakair",
       postalCode: "1750",
     },
 
@@ -1044,8 +1044,8 @@ export const postalData: DistrictData = {
       postalCode: "1723",
     },
     {
-      city: "Kapashia",
-      sub: "kapashia",
+      city: "Kapasia",
+      sub: "Kapasia",
       postalCode: "1730",
     },
     {
@@ -1100,7 +1100,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sripur",
-      sub: "Rajendrapur Canttome",
+      sub: "Rajendrapur Cantonment",
       postalCode: "1742",
     },
   ],
@@ -1174,12 +1174,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Charbhadrasan",
-      sub: "Charbadrashan",
+      sub: "Charbhadrasan",
       postalCode: "7810",
     },
     {
       city: "Faridpur Sadar",
-      sub: "Faridpursadar",
+      sub: "Faridpur Sadar",
       postalCode: "7800",
     },
     {
@@ -1194,17 +1194,17 @@ export const postalData: DistrictData = {
     },
     {
       city: "Faridpur Sadar",
-      sub: "Baitulaman Politecni",
+      sub: "Baitul Aman Polytechnic",
       postalCode: "7803",
     },
     {
-      city: "Madukhali",
-      sub: "Madukhali",
+      city: "Madhukhali",
+      sub: "Madhukhali",
       postalCode: "7850",
     },
     {
-      city: "Madukhali",
-      sub: "Kamarkali",
+      city: "Madhukhali",
+      sub: "Kamarkhali",
       postalCode: "7851",
     },
     {
@@ -1229,12 +1229,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sadarpur",
-      sub: "Bishwa jaker Manjil",
+      sub: "Bishwa Jaker Manjil",
       postalCode: "7822",
     },
     {
-      city: "Shriangan",
-      sub: "Shriangan",
+      city: "Saltha",
+      sub: "Saltha",
       postalCode: "7804",
     },
   ],
@@ -1260,12 +1260,12 @@ export const postalData: DistrictData = {
       postalCode: "7933",
     },
     {
-      city: "kalkini",
+      city: "Kalkini",
       sub: "Kalkini",
       postalCode: "7920",
     },
     {
-      city: "kalkini",
+      city: "Kalkini",
       sub: "Sahabrampur",
       postalCode: "7921",
     },
@@ -1276,7 +1276,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Madaripur Sadar",
-      sub: "Charmugria",
+      sub: "Charmuguria",
       postalCode: "7901",
     },
     {
@@ -1367,7 +1367,7 @@ export const postalData: DistrictData = {
       postalCode: "8002",
     },
     {
-      city: "Gopalganj Sadar",
+      city: "Shariatpur Sadar",
       sub: "Chandradighalia",
       postalCode: "8013",
     },
@@ -1414,17 +1414,17 @@ export const postalData: DistrictData = {
       postalCode: "8110",
     },
     {
-      city: "Maksudpur",
-      sub: "Maksudpur",
+      city: "Muksudpur",
+      sub: "Muksudpur",
       postalCode: "8140",
     },
     {
-      city: "Maksudpur",
+      city: "Muksudpur",
       sub: "Batkiamari",
       postalCode: "8141",
     },
     {
-      city: "Maksudpur",
+      city: "Muksudpur",
       sub: "Khandarpara",
       postalCode: "8142",
     },
@@ -1569,7 +1569,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Ghatail",
-      sub: "Ghatial",
+      sub: "Ghatail",
       postalCode: "1980",
     },
     {
@@ -1741,13 +1741,13 @@ export const postalData: DistrictData = {
   ],
   Jamalpur: [
     {
-      city: "Dewangonj",
-      sub: "Dewangonj",
+      city: "Dewanganj",
+      sub: "Dewanganj",
       postalCode: "2030",
     },
     {
-      city: "Dewangonj",
-      sub: "Dewangonj S. Mills",
+      city: "Dewanganj",
+      sub: "Dewanganj Sugar Mills",
       postalCode: "2031",
     },
     {
@@ -1873,8 +1873,8 @@ export const postalData: DistrictData = {
       postalCode: "2111",
     },
     {
-      city: "Sherpur Shadar",
-      sub: "Sherpur Shadar",
+      city: "Sherpur Sadar",
+      sub: "Sherpur Sadar",
       postalCode: "2100",
     },
     {
@@ -1931,7 +1931,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Babuganj",
-      sub: "Barishal Cadet",
+      sub: "Barisal Cadet College",
       postalCode: "8216",
     },
     {
@@ -1980,47 +1980,47 @@ export const postalData: DistrictData = {
       postalCode: "8206",
     },
     {
-      city: "Gouranadi",
-      sub: "Gouranadi",
+      city: "Gournadi",
+      sub: "Gournadi",
       postalCode: "8230",
     },
     {
-      city: "Gouranadi",
+      city: "Gournadi",
       sub: "Tarki Bandar",
       postalCode: "8231",
     },
     {
-      city: "Gouranadi",
+      city: "Gournadi",
       sub: "Kashemabad",
       postalCode: "8232",
     },
     {
-      city: "Gouranadi",
+      city: "Gournadi",
       sub: "Batajor",
       postalCode: "8233",
     },
     {
-      city: "Mahendiganj",
-      sub: "Mahendiganj",
+      city: "Mehendiganj",
+      sub: "Mehendiganj",
       postalCode: "8270",
     },
     {
-      city: "Mahendiganj",
+      city: "Mehendiganj",
       sub: "Laskarpur",
       postalCode: "8271",
     },
     {
-      city: "Mahendiganj",
+      city: "Mehendiganj",
       sub: "Ulania",
       postalCode: "8272",
     },
     {
-      city: "Mahendiganj",
+      city: "Mehendiganj",
       sub: "Nalgora",
       postalCode: "8273",
     },
     {
-      city: "Mahendiganj",
+      city: "Mehendiganj",
       sub: "Langutia",
       postalCode: "8274",
     },
@@ -2040,28 +2040,28 @@ export const postalData: DistrictData = {
       postalCode: "8252",
     },
     {
-      city: "Sahebganj",
-      sub: "Sahebganj",
+      city: "Bakerganj",
+      sub: "Bakerganj",
       postalCode: "8280",
     },
     {
-      city: "Sahebganj",
+      city: "Bakerganj",
       sub: "Charamandi",
       postalCode: "8281",
     },
     {
-      city: "Sahebganj",
+      city: "Bakerganj",
       sub: "Padri Shibpur",
       postalCode: "8282",
     },
     {
-      city: "Sahebganj",
+      city: "Bakerganj",
       sub: "Shialguni",
       postalCode: "8283",
     },
     {
-      city: "Sahebganj",
-      sub: "kalaskati",
+      city: "Bakerganj",
+      sub: "Kalaskati",
       postalCode: "8284",
     },
     {
@@ -2102,8 +2102,8 @@ export const postalData: DistrictData = {
       postalCode: "8301",
     },
     {
-      city: "Borhanuddin UPO",
-      sub: "Borhanuddin UPO",
+      city: "Borhanuddin",
+      sub: "Borhanuddin",
       postalCode: "8320",
     },
     {
@@ -2147,8 +2147,8 @@ export const postalData: DistrictData = {
       postalCode: "8350",
     },
     {
-      city: "Lalmohan UPO",
-      sub: "Lalmohan UPO",
+      city: "Lalmohan",
+      sub: "Lalmohan",
       postalCode: "8330",
     },
     {
@@ -2251,22 +2251,22 @@ export const postalData: DistrictData = {
       postalCode: "8552",
     },
     {
-      city: "kaukhali",
-      sub: "Kaukhali",
+      city: "Kawkhali",
+      sub: "Kawkhali",
       postalCode: "8510",
     },
     {
-      city: "kaukhali",
+      city: "Kawkhali",
       sub: "Keundia",
       postalCode: "8511",
     },
     {
-      city: "kaukhali",
+      city: "Kawkhali",
       sub: "Joykul",
       postalCode: "8512",
     },
     {
-      city: "kaukhali",
+      city: "Kawkhali",
       sub: "Jolagati",
       postalCode: "8513",
     },
@@ -2492,8 +2492,8 @@ export const postalData: DistrictData = {
       postalCode: "5020",
     },
     {
-      city: "Panchagra Sadar",
-      sub: "Panchagar Sadar",
+      city: "Panchagarh Sadar",
+      sub: "Panchagarh Sadar",
       postalCode: "5000",
     },
     {
@@ -2561,12 +2561,12 @@ export const postalData: DistrictData = {
     { city: "Hajiganj", sub: "Hajiganj", postalCode: "3610" },
     { city: "Kachua", sub: "Kachua", postalCode: "3620" },
     { city: "Shahrasti", sub: "Shahrasti", postalCode: "3630" },
-    { city: "Shahrasti", sub: "Chitoshi", postalCode: "3631" },
+    { city: "Shahrasti", sub: "Chitoshi Bazar", postalCode: "3631" },
     { city: "Matlab", sub: "Matlab", postalCode: "3640" },
-    { city: "Matlab", sub: "Matlabganj", postalCode: "3641" },
+    { city: "Matlab", sub: "Matlab Bazar", postalCode: "3641" },
     { city: "Faridganj", sub: "Faridganj", postalCode: "3650" },
-    { city: "Faridganj", sub: "Gridkaliandia", postalCode: "3651" },
-    { city: "Faridganj", sub: "Rampur EDSO", postalCode: "3654" },
+    { city: "Faridganj", sub: "Gridakaliandia", postalCode: "3651" },
+    { city: "Faridganj", sub: "Rampur", postalCode: "3654" },
   ],
   Dinajpur: [
     {
@@ -2590,12 +2590,12 @@ export const postalData: DistrictData = {
       postalCode: "5220",
     },
     {
-      city: "Chrirbandar",
-      sub: "Chrirbandar",
+      city: "Chirirbandar",
+      sub: "Chirirbandar",
       postalCode: "5240",
     },
     {
-      city: "Chrirbandar",
+      city: "Chirirbandar",
       sub: "Ranirbandar",
       postalCode: "5241",
     },
@@ -2625,17 +2625,17 @@ export const postalData: DistrictData = {
       postalCode: "5226",
     },
     {
-      city: "Nababganj",
-      sub: "Nababganj",
+      city: "Nawabganj",
+      sub: "Nawabganj",
       postalCode: "5280",
     },
     {
-      city: "Nababganj",
+      city: "Nawabganj",
       sub: "Daudpur",
       postalCode: "5281",
     },
     {
-      city: "Nababganj",
+      city: "Nawabganj",
       sub: "Gopalpur",
       postalCode: "5282",
     },
@@ -2703,7 +2703,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Nilphamari Sadar",
-      sub: "Nilphamari Sugar Mil",
+      sub: "Nilphamari Sugar Mills",
       postalCode: "5301",
     },
     {
@@ -2775,12 +2775,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Rangpur Sadar",
-      sub: "Rangpur Cadet Colleg",
+      sub: "Rangpur Cadet College",
       postalCode: "5404",
     },
     {
       city: "Rangpur Sadar",
-      sub: "Rangpur Carmiecal Col",
+      sub: "Rangpur Carmichael College",
       postalCode: "5405",
     },
     {
@@ -2911,7 +2911,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Bonarpara",
-      sub: "saghata",
+      sub: "Saghata",
       postalCode: "5751",
     },
     {
@@ -3053,7 +3053,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sherpur",
-      sub: "Palli Unnyan Accadem",
+      sub: "Palli Unnayan Academy",
       postalCode: "5842",
     },
     {
@@ -3070,12 +3070,12 @@ export const postalData: DistrictData = {
   Joypurhat: [
     {
       city: "Akkelpur",
-      sub: "Akklepur",
+      sub: "Akkelpur",
       postalCode: "5940",
     },
     {
       city: "Akkelpur",
-      sub: "jamalganj",
+      sub: "Jamalganj",
       postalCode: "5941",
     },
     {
@@ -3089,8 +3089,8 @@ export const postalData: DistrictData = {
       postalCode: "5900",
     },
     {
-      city: "kalai",
-      sub: "kalai",
+      city: "Kalai",
+      sub: "Kalai",
       postalCode: "5930",
     },
     {
@@ -3099,7 +3099,7 @@ export const postalData: DistrictData = {
       postalCode: "5920",
     },
     {
-      city: "panchbibi",
+      city: "Panchbibi",
       sub: "Panchbibi",
       postalCode: "5910",
     },
@@ -3188,7 +3188,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Rajshahi Sadar",
-      sub: "Rajshahi Canttonment",
+      sub: "Rajshahi Cantonment",
       postalCode: "6202",
     },
     {
@@ -3224,58 +3224,44 @@ export const postalData: DistrictData = {
       postalCode: "6330",
     },
     {
-      city: "Chapinawabganj Sadar",
-      sub: "Chapinawbganj Sadar",
+      city: "Chapainawabganj Sadar",
+      sub: "Chapainawabganj Sadar",
       postalCode: "6300",
     },
     {
-      city: "Chapinawabganj Sadar",
-      sub: "Rajarampur",
+      city: "Chapainawabganj Sadar",
+      sub: "Islampur",
       postalCode: "6301",
     },
     {
-      city: "Chapinawabganj Sadar",
-      sub: "Ramchandrapur",
-      postalCode: "6302",
+      city: "Gomostapur",
+      sub: "Rohanpur",
+      postalCode: "6321",
     },
     {
-      city: "Chapinawabganj Sadar",
-      sub: "Amnura",
-      postalCode: "6303",
+      city: "Gomostapur",
+      sub: "Gomostapur",
+      postalCode: "6320",
     },
     {
       city: "Nachol",
       sub: "Nachol",
       postalCode: "6310",
     },
+
     {
-      city: "Nachol",
-      sub: "Mandumala",
-      postalCode: "6311",
-    },
-    {
-      city: "Rohanpur",
-      sub: "Rohanpur",
-      postalCode: "6320",
-    },
-    {
-      city: "Rohanpur",
-      sub: "Gomashtapur",
-      postalCode: "6321",
-    },
-    {
-      city: "Shibganj U.P.O",
-      sub: "Shibganj U.P.O",
+      city: "Shibganj",
+      sub: "Shibganj",
       postalCode: "6340",
     },
     {
-      city: "Shibganj U.P.O",
-      sub: "Kansart",
+      city: "Shibganj",
+      sub: "Kansat",
       postalCode: "6341",
     },
     {
-      city: "Shibganj U.P.O",
-      sub: "Manaksha",
+      city: "Shibganj",
+      sub: "Monakasha",
       postalCode: "6342",
     },
   ],
@@ -3660,7 +3646,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chhatak",
-      sub: "Chhatak Cement Facto",
+      sub: "Chhatak Cement Factory",
       postalCode: "3081",
     },
     {
@@ -3675,7 +3661,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chhatak",
-      sub: "Gabindaganj Natun Ba",
+      sub: "Gabindaganj Natun Bazar",
       postalCode: "3084",
     },
     {
@@ -3690,7 +3676,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chhatak",
-      sub: "jahidpur",
+      sub: "Jahidpur",
       postalCode: "3087",
     },
     {
@@ -3710,8 +3696,8 @@ export const postalData: DistrictData = {
       postalCode: "3041",
     },
     {
-      city: "Duara bazar",
-      sub: "Duara bazar",
+      city: "Duarabazar",
+      sub: "Duarabazar",
       postalCode: "3070",
     },
     {
@@ -3720,32 +3706,32 @@ export const postalData: DistrictData = {
       postalCode: "3050",
     },
     {
-      city: "Jagnnathpur",
-      sub: "Jagnnathpur",
+      city: "Jagannathpur",
+      sub: "Jagannathpur",
       postalCode: "3060",
     },
     {
-      city: "Jagnnathpur",
+      city: "Jagannathpur",
       sub: "Syedpur",
       postalCode: "3061",
     },
     {
-      city: "Jagnnathpur",
+      city: "Jagannathpur",
       sub: "Atuajan",
       postalCode: "3062",
     },
     {
-      city: "Jagnnathpur",
+      city: "Jagannathpur",
       sub: "Hasan Fatemapur",
       postalCode: "3063",
     },
     {
-      city: "Jagnnathpur",
+      city: "Jagannathpur",
       sub: "Rasulganj",
       postalCode: "3064",
     },
     {
-      city: "Jagnnathpur",
+      city: "Jagannathpur",
       sub: "Shiramsi",
       postalCode: "3065",
     },
@@ -3827,32 +3813,32 @@ export const postalData: DistrictData = {
       postalCode: "3129",
     },
     {
-      city: "Bianibazar",
-      sub: "Bianibazar",
+      city: "Beanibazar",
+      sub: "Beanibazar",
       postalCode: "3170",
     },
     {
-      city: "Bianibazar",
-      sub: "jaldup",
+      city: "Beanibazar",
+      sub: "Jaldhup",
       postalCode: "3171",
     },
     {
-      city: "Bianibazar",
+      city: "Beanibazar",
       sub: "Mathiura",
       postalCode: "3172",
     },
     {
-      city: "Bianibazar",
-      sub: "Kurar bazar",
+      city: "Beanibazar",
+      sub: "Kurar Bazar",
       postalCode: "3173",
     },
     {
-      city: "Bianibazar",
-      sub: "Salia bazar",
+      city: "Beanibazar",
+      sub: "Salia Bazar",
       postalCode: "3174",
     },
     {
-      city: "Bianibazar",
+      city: "Beanibazar",
       sub: "Churkai",
       postalCode: "3175",
     },
@@ -3888,57 +3874,57 @@ export const postalData: DistrictData = {
     },
     {
       city: "Fenchuganj",
-      sub: "Fenchuganj SareKarkh",
+      sub: "Fenchuganj Sare Karkhana",
       postalCode: "3117",
     },
     {
-      city: "Goainhat",
-      sub: "Goainhat",
+      city: "Gowainghat",
+      sub: "Gowainghat",
       postalCode: "3150",
     },
     {
-      city: "Goainhat",
+      city: "Gowainghat",
       sub: "Jaflong",
       postalCode: "3151",
     },
     {
-      city: "Goainhat",
+      city: "Gowainghat",
       sub: "Chiknagul",
       postalCode: "3152",
     },
     {
-      city: "Gopalganj",
-      sub: "Gopalgannj",
+      city: "Golapganj",
+      sub: "Golapganj",
       postalCode: "3160",
     },
     {
-      city: "Gopalganj",
-      sub: "Dhaka Dakkhin",
+      city: "Golapganj",
+      sub: "Dhaka Dakshin",
       postalCode: "3161",
     },
     {
-      city: "Gopalganj",
-      sub: "Dakkhin Bhadashore",
+      city: "Golapganj",
+      sub: "Dakkhin Bhadeshwar",
       postalCode: "3162",
     },
     {
-      city: "Gopalganj",
+      city: "Golapganj",
       sub: "Ranaping",
       postalCode: "3163",
     },
     {
-      city: "Gopalganj",
-      sub: "banigram",
+      city: "Golapganj",
+      sub: "Banigram",
       postalCode: "3164",
     },
     {
-      city: "Gopalganj",
+      city: "Golapganj",
       sub: "Chandanpur",
       postalCode: "3165",
     },
     {
       city: "Jaintapur",
-      sub: "Jainthapur",
+      sub: "Jaintapur",
       postalCode: "3156",
     },
     {
@@ -3972,18 +3958,18 @@ export const postalData: DistrictData = {
       postalCode: "3183",
     },
     {
-      city: "Kompanyganj",
-      sub: "Kompanyganj",
+      city: "Companiganj",
+      sub: "Companiganj",
       postalCode: "3140",
     },
     {
       city: "Sylhet Sadar",
-      sub: "Sylhe Sadar",
+      sub: "Sylhet Sadar",
       postalCode: "3100",
     },
     {
       city: "Sylhet Sadar",
-      sub: "Sylhet Cadet Col",
+      sub: "Sylhet Cadet College",
       postalCode: "3101",
     },
     {
@@ -3998,7 +3984,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sylhet Sadar",
-      sub: "Jalalabad Cantoment",
+      sub: "Jalalabad Cantonment",
       postalCode: "3104",
     },
     {
@@ -4018,7 +4004,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sylhet Sadar",
-      sub: "Mogla",
+      sub: "Moglabazar",
       postalCode: "3108",
     },
     {
@@ -4033,7 +4019,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sylhet Sadar",
-      sub: "Kamalbazer",
+      sub: "Kamalbazar",
       postalCode: "3112",
     },
     {
@@ -4043,7 +4029,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Sylhet Sadar",
-      sub: "Shahajalal Science &",
+      sub: "Shahjalal University",
       postalCode: "3114",
     },
   ],
@@ -4060,12 +4046,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Baralekha",
-      sub: "Dhakkhinbag",
+      sub: "Dakkhinbagh",
       postalCode: "3252",
     },
     {
       city: "Baralekha",
-      sub: "Purbashahabajpur",
+      sub: "Purbasha Habajpur",
       postalCode: "3253",
     },
     {
@@ -4075,7 +4061,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Kamalganj",
-      sub: "Keramatnaga",
+      sub: "Keramatnagar",
       postalCode: "3221",
     },
     {
@@ -4160,7 +4146,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Srimangal",
-      sub: "Narain Chora",
+      sub: "Naraindighirpar",
       postalCode: "3211",
     },
     {
@@ -4181,8 +4167,8 @@ export const postalData: DistrictData = {
   ],
   Habiganj: [
     {
-      city: "Azmireeganj",
-      sub: "Azmireeganj",
+      city: "Ajmiriganj",
+      sub: "Ajmiriganj",
       postalCode: "3360",
     },
     {
@@ -4221,17 +4207,17 @@ export const postalData: DistrictData = {
       postalCode: "3322",
     },
     {
-      city: "Hobiganj Sadar",
-      sub: "Hobiganj Sadar",
+      city: "Habiganj Sadar",
+      sub: "Habiganj Sadar",
       postalCode: "3300",
     },
     {
-      city: "Hobiganj Sadar",
-      sub: "Shaestaganj",
+      city: "Habiganj Sadar",
+      sub: "Shaistaganj",
       postalCode: "3301",
     },
     {
-      city: "Hobiganj Sadar",
+      city: "Habiganj Sadar",
       sub: "Gopaya",
       postalCode: "3302",
     },
@@ -4282,7 +4268,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Nabiganj",
-      sub: "Digalbak",
+      sub: "Dighalbak",
       postalCode: "3373",
     },
     {
@@ -4308,13 +4294,13 @@ export const postalData: DistrictData = {
       postalCode: "7042",
     },
     {
-      city: "Janipur",
-      sub: "Janipur",
+      city: "Khoksa",
+      sub: "Khoksa",
       postalCode: "7020",
     },
     {
-      city: "Janipur",
-      sub: "Khoksa",
+      city: "Khoksa",
+      sub: "Janipur",
       postalCode: "7021",
     },
     {
@@ -4328,23 +4314,23 @@ export const postalData: DistrictData = {
       postalCode: "7011",
     },
     {
-      city: "Kustia Sadar",
-      sub: "Kustia Sadar",
+      city: "Kushtia Sadar",
+      sub: "Kushtia Sadar",
       postalCode: "7000",
     },
     {
-      city: "Kustia Sadar",
+      city: "Kushtia Sadar",
       sub: "Kushtia Mohini",
       postalCode: "7001",
     },
     {
-      city: "Kustia Sadar",
+      city: "Kushtia Sadar",
       sub: "Jagati",
       postalCode: "7002",
     },
     {
-      city: "Kustia Sadar",
-      sub: "Islami University",
+      city: "Kushtia Sadar",
+      sub: "Islamic University",
       postalCode: "7003",
     },
     {
@@ -4363,18 +4349,18 @@ export const postalData: DistrictData = {
       postalCode: "7032",
     },
     {
-      city: "Rafayetpur",
-      sub: "Rafayetpur",
+      city: "Daulatpur",
+      sub: "Daulatpur",
       postalCode: "7050",
     },
     {
-      city: "Rafayetpur",
+      city: "Daulatpur",
       sub: "Taragunia",
       postalCode: "7051",
     },
     {
-      city: "Rafayetpur",
-      sub: "Khasmathurapur",
+      city: "Daulatpur",
+      sub: "Khas Mathurapur",
       postalCode: "7052",
     },
   ],
@@ -4396,13 +4382,8 @@ export const postalData: DistrictData = {
     },
     {
       city: "Meherpur Sadar",
-      sub: "Mujib Nagar Complex",
+      sub: "Mujibnagar Complex",
       postalCode: "7102",
-    },
-    {
-      city: "Meherpur Sadar",
-      sub: "Amjhupi",
-      postalCode: "7152",
     },
   ],
   Chuadanga: [
@@ -4442,25 +4423,25 @@ export const postalData: DistrictData = {
       postalCode: "7222",
     },
     {
-      city: "Doulatganj",
-      sub: "Doulatganj",
+      city: "Jibannagar",
+      sub: "Jibannagar",
       postalCode: "7230",
     },
   ],
   Jhenaidah: [
     {
-      city: "Harinakundu",
-      sub: "Harinakundu",
+      city: "Harinakunda",
+      sub: "Harinakunda",
       postalCode: "7310",
     },
     {
-      city: "Jinaidaha Sadar",
-      sub: "Jinaidaha Sadar",
+      city: "Jhenaidah Sadar",
+      sub: "Jhenaidah Sadar",
       postalCode: "7300",
     },
     {
-      city: "Jinaidaha Sadar",
-      sub: "Jinaidaha Cadet College",
+      city: "Jhenaidah Sadar",
+      sub: "Jhenaidah Cadet College",
       postalCode: "7301",
     },
     {
@@ -4484,8 +4465,8 @@ export const postalData: DistrictData = {
       postalCode: "7351",
     },
     {
-      city: "Shailakupa",
-      sub: "Shailakupa",
+      city: "Shailkupa",
+      sub: "Shailkupa",
       postalCode: "7320",
     },
     {
@@ -4494,7 +4475,7 @@ export const postalData: DistrictData = {
       postalCode: "7321",
     },
   ],
-  Jessore: [
+  Jashore: [
     {
       city: "Bagharpara",
       sub: "Bagharpara",
@@ -4511,42 +4492,42 @@ export const postalData: DistrictData = {
       postalCode: "7410",
     },
     {
-      city: "Jessore Sadar",
-      sub: "Jessore Sadar",
+      city: "Jashore Sadar",
+      sub: "Jashore Sadar",
       postalCode: "7400",
     },
     {
-      city: "Jessore Sadar",
-      sub: "Jessore Upa-Shahar",
+      city: "Jashore Sadar",
+      sub: "Jashore Upa-Shahar",
       postalCode: "7401",
     },
     {
-      city: "Jessore Sadar",
+      city: "Jashore Sadar",
       sub: "Chanchra",
       postalCode: "7402",
     },
     {
-      city: "Jessore Sadar",
-      sub: "Jessore canttonment",
+      city: "Jashore Sadar",
+      sub: "Jashore Cantonment",
       postalCode: "7403",
     },
     {
-      city: "Jessore Sadar",
-      sub: "Jessore Airbach",
+      city: "Jashore Sadar",
+      sub: "Jashore Airport",
       postalCode: "7404",
     },
     {
-      city: "Jessore Sadar",
+      city: "Jashore Sadar",
       sub: "Rupdia",
       postalCode: "7405",
     },
     {
-      city: "Jessore Sadar",
+      city: "Jashore Sadar",
       sub: "Basundia",
       postalCode: "7406",
     },
     {
-      city: "Jessore Sadar",
+      city: "Jashore Sadar",
       sub: "Churamankathi",
       postalCode: "7407",
     },
@@ -4608,27 +4589,27 @@ export const postalData: DistrictData = {
       postalCode: "7520",
     },
     {
-      city: "Laxmipasha",
+      city: "Lohagara",
       sub: "Laxmipasha",
       postalCode: "7510",
     },
     {
-      city: "Laxmipasha",
-      sub: "Lohagora",
+      city: "Lohagara",
+      sub: "Lohagara",
       postalCode: "7511",
     },
     {
-      city: "Laxmipasha",
+      city: "Lohagara",
       sub: "Itna",
       postalCode: "7512",
     },
     {
-      city: "Laxmipasha",
+      city: "Lohagara",
       sub: "Naldi",
       postalCode: "7513",
     },
     {
-      city: "Laxmipasha",
+      city: "Lohagara",
       sub: "Baradia",
       postalCode: "7514",
     },
@@ -4675,89 +4656,89 @@ export const postalData: DistrictData = {
       postalCode: "7632",
     },
     {
-      city: "Shripur",
-      sub: "Shripur",
+      city: "Sreepur",
+      sub: "Sreepur",
       postalCode: "7610",
     },
     {
-      city: "Shripur",
+      city: "Sreepur",
       sub: "Langalbadh",
       postalCode: "7611",
     },
     {
-      city: "Shripur",
+      city: "Sreepur",
       sub: "Nachol",
       postalCode: "7612",
     },
   ],
   Khulna: [
     {
-      city: "Alaipur",
+      city: "Rupsha",
       sub: "Alaipur",
       postalCode: "9240",
     },
     {
-      city: "Alaipur",
+      city: "Rupsha",
       sub: "Rupsha",
       postalCode: "9241",
     },
     {
-      city: "Alaipur",
+      city: "Rupsha",
       sub: "Belphulia",
       postalCode: "9242",
     },
     {
-      city: "Batiaghat",
-      sub: "Batiaghat",
+      city: "Batiaghata",
+      sub: "Batiaghata",
       postalCode: "9260",
     },
     {
-      city: "Batiaghat",
+      city: "Batiaghata",
       sub: "Surkalee",
       postalCode: "9261",
     },
     {
-      city: "Chalna Bazar",
+      city: "Dacope",
       sub: "Chalna Bazar",
       postalCode: "9270",
     },
     {
-      city: "Chalna Bazar",
-      sub: "Dakup",
+      city: "Dacope",
+      sub: "Dacope",
       postalCode: "9271",
     },
     {
-      city: "Chalna Bazar",
+      city: "Dacope",
       sub: "Bajua",
       postalCode: "9272",
     },
     {
-      city: "Chalna Bazar",
+      city: "Dacope",
       sub: "Nalian",
       postalCode: "9273",
     },
     {
-      city: "Digalia",
-      sub: "Digalia",
+      city: "Dighalia",
+      sub: "Dighalia",
       postalCode: "9220",
     },
     {
-      city: "Digalia",
+      city: "Dighalia",
       sub: "Chandni Mahal",
       postalCode: "9221",
     },
     {
-      city: "Digalia",
+      city: "Dighalia",
       sub: "Senhati",
       postalCode: "9222",
     },
     {
-      city: "Digalia",
+      city: "Dighalia",
       sub: "Ghoshghati",
       postalCode: "9223",
     },
     {
-      city: "Digalia",
+      city: "Dighalia",
       sub: "Gazirhat",
       postalCode: "9224",
     },
@@ -4768,7 +4749,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Khulna Sadar",
-      sub: "Khula Sadar",
+      sub: "Khulna Sadar",
       postalCode: "9100",
     },
     {
@@ -4793,7 +4774,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Khulna Sadar",
-      sub: "Jahanabad Canttonmen",
+      sub: "Jahanabad Cantonment",
       postalCode: "9205",
     },
     {
@@ -4812,42 +4793,42 @@ export const postalData: DistrictData = {
       postalCode: "9208",
     },
     {
-      city: "Madinabad",
+      city: "Koyra",
       sub: "Madinabad",
       postalCode: "9290",
     },
     {
-      city: "Madinabad",
-      sub: "Amadee",
+      city: "Koyra",
+      sub: "Amadi",
       postalCode: "9291",
     },
     {
-      city: "Paikgachha",
-      sub: "Paikgachha",
+      city: "Paikgacha",
+      sub: "Paikgacha",
       postalCode: "9280",
     },
     {
-      city: "Paikgachha",
+      city: "Paikgacha",
       sub: "Godaipur",
       postalCode: "9281",
     },
     {
-      city: "Paikgachha",
-      sub: "Kapilmoni",
+      city: "Paikgacha",
+      sub: "Kapilmuni",
       postalCode: "9282",
     },
     {
-      city: "Paikgachha",
+      city: "Paikgacha",
       sub: "Katipara",
       postalCode: "9283",
     },
     {
-      city: "Paikgachha",
+      city: "Paikgacha",
       sub: "Chandkhali",
       postalCode: "9284",
     },
     {
-      city: "Paikgachha",
+      city: "Paikgacha",
       sub: "Garaikhali",
       postalCode: "9285",
     },
@@ -4857,32 +4838,32 @@ export const postalData: DistrictData = {
       postalCode: "9210",
     },
     {
-      city: "Sajiara",
-      sub: "Sajiara",
+      city: "Dumuria",
+      sub: "Dumuria",
       postalCode: "9250",
     },
     {
-      city: "Sajiara",
+      city: "Dumuria",
       sub: "Ghonabanda",
       postalCode: "9251",
     },
     {
-      city: "Sajiara",
+      city: "Dumuria",
       sub: "Chuknagar",
       postalCode: "9252",
     },
     {
-      city: "Sajiara",
+      city: "Dumuria",
       sub: "Shahapur",
       postalCode: "9253",
     },
     {
-      city: "Terakhada",
-      sub: "Terakhada",
+      city: "Terokhada",
+      sub: "Terokhada",
       postalCode: "9230",
     },
     {
-      city: "Terakhada",
+      city: "Terokhada",
       sub: "Pak Barasat",
       postalCode: "9231",
     },
@@ -4904,12 +4885,12 @@ export const postalData: DistrictData = {
       postalCode: "9302",
     },
     {
-      city: "Chalna Ankorage",
-      sub: "Chalna Ankorage",
+      city: "Chalna Anchorage",
+      sub: "Chalna Anchorage",
       postalCode: "9350",
     },
     {
-      city: "Chalna Ankorage",
+      city: "Chalna Anchorage",
       sub: "Mongla Port",
       postalCode: "9351",
     },
@@ -4930,7 +4911,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Fakirhat",
-      sub: "Mansa",
+      sub: "Manasa",
       postalCode: "9371",
     },
     {
@@ -4985,12 +4966,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Morelganj",
-      sub: "Sannasi Bazar",
+      sub: "Sunnashi Bazar",
       postalCode: "9321",
     },
     {
       city: "Morelganj",
-      sub: "Telisatee",
+      sub: "Telisati",
       postalCode: "9322",
     },
     {
@@ -5122,12 +5103,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Satkhira Sadar",
-      sub: "Satkhira Islamia Acc",
+      sub: "Satkhira Islamia Academy",
       postalCode: "9401",
     },
     {
       city: "Satkhira Sadar",
-      sub: "Gunakar kati",
+      sub: "Gunakarkati",
       postalCode: "9402",
     },
     {
@@ -5136,8 +5117,8 @@ export const postalData: DistrictData = {
       postalCode: "9403",
     },
     {
-      city: "Taala",
-      sub: "Taala",
+      city: "Tala",
+      sub: "Tala",
       postalCode: "9420",
     },
     {
@@ -5168,27 +5149,27 @@ export const postalData: DistrictData = {
       postalCode: "3420",
     },
     {
-      city: "Brahamanbaria Sadar",
-      sub: "Brahamanbaria Sadar",
+      city: "Brahmanbaria Sadar",
+      sub: "Brahmanbaria Sadar",
       postalCode: "3400",
     },
     {
-      city: "Brahamanbaria Sadar",
-      sub: "Talshahar",
+      city: "Brahmanbaria Sadar",
+      sub: "Talsahar",
       postalCode: "3401",
     },
     {
-      city: "Brahamanbaria Sadar",
+      city: "Brahmanbaria Sadar",
       sub: "Ashuganj",
       postalCode: "3402",
     },
     {
-      city: "Brahamanbaria Sadar",
-      sub: "Ashuganj Share",
+      city: "Brahmanbaria Sadar",
+      sub: "Ashuganj Share Bazar",
       postalCode: "3403",
     },
     {
-      city: "Brahamanbaria Sadar",
+      city: "Brahmanbaria Sadar",
       sub: "Poun",
       postalCode: "3404",
     },
@@ -5301,7 +5282,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Barura",
-      sub: "Murdafarganj",
+      sub: "Muradnagar Ganj",
       postalCode: "3562",
     },
     {
@@ -5316,31 +5297,31 @@ export const postalData: DistrictData = {
     },
     {
       city: "Burichang",
-      sub: "Maynamoti bazar",
+      sub: "Mainamati Bazar",
       postalCode: "3521",
     },
     {
       city: "Chandina",
-      sub: "Chandia",
+      sub: "Chandina",
       postalCode: "3510",
     },
     {
       city: "Chandina",
-      sub: "Madhaiabazar",
+      sub: "Madhaiya Bazar",
       postalCode: "3511",
     },
     {
-      city: "Chouddagram",
-      sub: "Chouddagram",
+      city: "Chauddagram",
+      sub: "Chauddagram",
       postalCode: "3550",
     },
     {
-      city: "Chouddagram",
+      city: "Chauddagram",
       sub: "Batisa",
       postalCode: "3551",
     },
     {
-      city: "Chouddagram",
+      city: "Chauddagram",
       sub: "Chiora",
       postalCode: "3552",
     },
@@ -5351,7 +5332,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Comilla Sadar",
-      sub: "Comilla Contoment",
+      sub: "Comilla Cantonment",
       postalCode: "3501",
     },
     {
@@ -5390,22 +5371,22 @@ export const postalData: DistrictData = {
       postalCode: "3519",
     },
     {
-      city: "Davidhar",
-      sub: "Davidhar",
+      city: "Debidwar",
+      sub: "Debidwar",
       postalCode: "3530",
     },
     {
-      city: "Davidhar",
+      city: "Debidwar",
       sub: "Gangamandal",
       postalCode: "3531",
     },
     {
-      city: "Davidhar",
+      city: "Debidwar",
       sub: "Barashalghar",
       postalCode: "3532",
     },
     {
-      city: "Davidhar",
+      city: "Debidwar",
       sub: "Dhamtee",
       postalCode: "3533",
     },
@@ -5430,22 +5411,22 @@ export const postalData: DistrictData = {
       postalCode: "3572",
     },
     {
-      city: "Langalkot",
-      sub: "Langalkot",
+      city: "Nangalkot",
+      sub: "Nangalkot",
       postalCode: "3580",
     },
     {
-      city: "Langalkot",
+      city: "Nangalkot",
       sub: "Dhalua",
       postalCode: "3581",
     },
     {
-      city: "Langalkot",
+      city: "Nangalkot",
       sub: "Chhariabazar",
       postalCode: "3582",
     },
     {
-      city: "Langalkot",
+      city: "Nangalkot",
       sub: "Gunabati",
       postalCode: "3583",
     },
@@ -5482,68 +5463,68 @@ export const postalData: DistrictData = {
   ],
   Lakshmipur: [
     {
-      city: "Char Alexgander",
-      sub: "Char Alexgander",
+      city: "Ramgati",
+      sub: "Char Alexander",
       postalCode: "3730",
     },
     {
-      city: "Char Alexgander",
-      sub: "Hajirghat",
+      city: "Ramgati",
+      sub: "Hajirhat",
       postalCode: "3731",
     },
     {
-      city: "Char Alexgander",
-      sub: "Ramgatirhat",
+      city: "Ramgati",
+      sub: "Ramgati",
       postalCode: "3732",
     },
     {
-      city: "Lakshimpur Sadar",
-      sub: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
+      sub: "Lakshmipur Sadar",
       postalCode: "3700",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Dalal Bazar",
       postalCode: "3701",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Bhabaniganj",
       postalCode: "3702",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Mandari",
       postalCode: "3703",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Keramatganj",
       postalCode: "3704",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Rupchara",
       postalCode: "3705",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Duttapara",
       postalCode: "3706",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Choupalli",
       postalCode: "3707",
     },
     {
-      city: "Lakshimpur Sadar",
+      city: "Lakshmipur Sadar",
       sub: "Chandraganj",
       postalCode: "3708",
     },
     {
-      city: "Lakshimpur Sadar",
-      sub: "Amani Lakshimpur",
+      city: "Lakshmipur Sadar",
+      sub: "Amani Lakshmipur",
       postalCode: "3709",
     },
     {
@@ -5577,27 +5558,27 @@ export const postalData: DistrictData = {
       postalCode: "3725",
     },
     {
-      city: "Raypur",
-      sub: "Raypur",
+      city: "Raipur",
+      sub: "Raipur",
       postalCode: "3710",
     },
     {
-      city: "Raypur",
+      city: "Raipur",
       sub: "Rakhallia",
       postalCode: "3711",
     },
     {
-      city: "Raypur",
+      city: "Raipur",
       sub: "Nagerdighirpar",
       postalCode: "3712",
     },
     {
-      city: "Raypur",
+      city: "Raipur",
       sub: "Haydarganj",
       postalCode: "3713",
     },
     {
-      city: "Raypur",
+      city: "Raipur",
       sub: "Bhuabari",
       postalCode: "3714",
     },
@@ -5605,7 +5586,7 @@ export const postalData: DistrictData = {
   Noakhali: [
     {
       city: "Basurhat",
-      sub: "Basur Hat",
+      sub: "Basurhat",
       postalCode: "3850",
     },
     {
@@ -5825,7 +5806,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Noakhali Sadar",
-      sub: "Din Monir Hat",
+      sub: "Din Monirhat",
       postalCode: "3803",
     },
     {
@@ -5893,50 +5874,45 @@ export const postalData: DistrictData = {
       sub: "T.P. Lamua",
       postalCode: "3865",
     },
-    {
-      city: "Chhatak",
-      sub: "Chourangi Bazar",
-      postalCode: "3893",
-    },
   ],
   Feni: [
     {
-      city: "Chhagalnaia",
-      sub: "Chhagalnaia",
+      city: "Chhagalnaiya",
+      sub: "Chhagalnaiya",
       postalCode: "3910",
     },
     {
-      city: "Chhagalnaia",
+      city: "Chhagalnaiya",
       sub: "Maharajganj",
       postalCode: "3911",
     },
     {
-      city: "Chhagalnaia",
+      city: "Chhagalnaiya",
       sub: "Daraga Hat",
       postalCode: "3912",
     },
     {
-      city: "Chhagalnaia",
+      city: "Chhagalnaiya",
       sub: "Puabashimulia",
       postalCode: "3913",
     },
     {
-      city: "Dagonbhuia",
-      sub: "Dagondhuia",
+      city: "Daganbhuiyan",
+      sub: "Daganbhuiyan",
       postalCode: "3920",
     },
     {
-      city: "Dagonbhuia",
+      city: "Daganbhuiyan",
       sub: "Dudmukha",
       postalCode: "3921",
     },
     {
-      city: "Dagonbhuia",
+      city: "Daganbhuiyan",
       sub: "Chhilonia",
       postalCode: "3922",
     },
     {
-      city: "Dagonbhuia",
+      city: "Daganbhuiyan",
       sub: "Rajapur",
       postalCode: "3923",
     },
@@ -5952,7 +5928,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Feni Sadar",
-      sub: "Sharshadie",
+      sub: "Sharshadi",
       postalCode: "3902",
     },
     {
@@ -5961,22 +5937,22 @@ export const postalData: DistrictData = {
       postalCode: "3903",
     },
     {
-      city: "Pashurampur",
-      sub: "Pashurampur",
+      city: "Parshuram",
+      sub: "Parshuram",
       postalCode: "3940",
     },
     {
-      city: "Pashurampur",
-      sub: "Shuarbazar",
+      city: "Parshuram",
+      sub: "Shubar Bazar",
       postalCode: "3941",
     },
     {
-      city: "Pashurampur",
+      city: "Parshuram",
       sub: "Fulgazi",
       postalCode: "3942",
     },
     {
-      city: "Pashurampur",
+      city: "Parshuram",
       sub: "Munshirhat",
       postalCode: "3943",
     },
@@ -6003,17 +5979,17 @@ export const postalData: DistrictData = {
   ],
   Chittagong: [
     {
-      city: "Anawara",
-      sub: "Anowara",
+      city: "Anwara",
+      sub: "Anwara",
       postalCode: "4376",
     },
     {
-      city: "Anawara",
+      city: "Anwara",
       sub: "Paroikora",
       postalCode: "4377",
     },
     {
-      city: "Anawara",
+      city: "Anwara",
       sub: "Battali",
       postalCode: "4378",
     },
@@ -6084,7 +6060,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chittagong Sadar",
-      sub: "Jaldia Merine Accade",
+      sub: "Jaldia Marine Academy",
       postalCode: "4206",
     },
     {
@@ -6094,12 +6070,12 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chittagong Sadar",
-      sub: "Mohard",
+      sub: "Mohora",
       postalCode: "4208",
     },
     {
       city: "Chittagong Sadar",
-      sub: "Chitt. Politechnic In",
+      sub: "Chittagong Polytechnic Institute",
       postalCode: "4209",
     },
     {
@@ -6139,27 +6115,27 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chittagong Sadar",
-      sub: "North Katuli",
+      sub: "North Kattali",
       postalCode: "4217",
     },
     {
       city: "Chittagong Sadar",
-      sub: "Chitt. Sailers Colon",
+      sub: "Chittagong Sailors Colony",
       postalCode: "4218",
     },
     {
       city: "Chittagong Sadar",
-      sub: "Chitt. Customs Acca",
+      sub: "Chittagong Customs Academy",
       postalCode: "4219",
     },
     {
       city: "Chittagong Sadar",
-      sub: "Chitt. Cantonment",
+      sub: "Chittagong Cantonment",
       postalCode: "4220",
     },
     {
       city: "Chittagong Sadar",
-      sub: "Al- Amin Baria Madra",
+      sub: "Al-Amin Baria Madrasah",
       postalCode: "4221",
     },
     {
@@ -6169,7 +6145,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Chittagong Sadar",
-      sub: "Export Processing",
+      sub: "Export Processing Zone",
       postalCode: "4223",
     },
     {
@@ -6481,8 +6457,8 @@ export const postalData: DistrictData = {
       postalCode: "4400",
     },
     {
-      city: "Laxmichhari",
-      sub: "Laxmichhari",
+      city: "Lakshmichhari",
+      sub: "Lakshmichhari",
       postalCode: "4470",
     },
     {
@@ -6506,15 +6482,15 @@ export const postalData: DistrictData = {
       postalCode: "4410",
     },
     {
-      city: "Ramghar Head Office",
-      sub: "Ramghar Head Office",
+      city: "Ramgarh Head Office",
+      sub: "Ramgarh Head Office",
       postalCode: "4440",
     },
   ],
   Rangamati: [
     {
-      city: "Barakal",
-      sub: "Barakal",
+      city: "Barkal",
+      sub: "Barkal",
       postalCode: "4570",
     },
     {
@@ -6523,8 +6499,8 @@ export const postalData: DistrictData = {
       postalCode: "4550",
     },
     {
-      city: "Jarachhari",
-      sub: "Jarachhari",
+      city: "Juraichhari",
+      sub: "Juraichhari",
       postalCode: "4560",
     },
     {
@@ -6558,8 +6534,8 @@ export const postalData: DistrictData = {
       postalCode: "4533",
     },
     {
-      city: "Longachh",
-      sub: "Longachh",
+      city: "Langadu",
+      sub: "Langadu",
       postalCode: "4580",
     },
     {
@@ -6568,13 +6544,13 @@ export const postalData: DistrictData = {
       postalCode: "4590",
     },
     {
-      city: "Naniachhar",
-      sub: "Nanichhar",
+      city: "Naniarchar",
+      sub: "Naniarchar",
       postalCode: "4520",
     },
     {
-      city: "Rajsthali",
-      sub: "Rajsthali",
+      city: "Rajasthali",
+      sub: "Rajasthali",
       postalCode: "4540",
     },
     {
@@ -6595,13 +6571,13 @@ export const postalData: DistrictData = {
       postalCode: "4600",
     },
     {
-      city: "Naikhong",
-      sub: "Naikhong",
+      city: "Naikhongchhari",
+      sub: "Naikhongchhari",
       postalCode: "4660",
     },
     {
-      city: "Roanchhari",
-      sub: "Roanchhari",
+      city: "Rowangchhari",
+      sub: "Rowangchhari",
       postalCode: "4610",
     },
     {
@@ -6615,50 +6591,50 @@ export const postalData: DistrictData = {
       postalCode: "4630",
     },
     {
-      city: "Thanchi",
+      city: "Lama",
       sub: "Lama",
       postalCode: "4641",
     },
   ],
   CoxsBazar: [
     {
-      city: "Chiringga",
-      sub: "Chiringga",
+      city: "Chakaria",
+      sub: "Chakaria",
       postalCode: "4740",
     },
     {
-      city: "Chiringga",
-      sub: "Chiringga S.O",
+      city: "Chakaria",
+      sub: "Chakaria S.O",
       postalCode: "4741",
     },
     {
-      city: "Chiringga",
-      sub: "Badarkali",
+      city: "Chakaria",
+      sub: "Badarkhali",
       postalCode: "4742",
     },
     {
-      city: "Chiringga",
+      city: "Chakaria",
       sub: "Malumghat",
       postalCode: "4743",
     },
     {
-      city: "Coxs Bazar Sadar",
-      sub: "Coxs Bazar Sadar",
+      city: "Cox's Bazar Sadar",
+      sub: "Cox's Bazar Sadar",
       postalCode: "4700",
     },
     {
-      city: "Coxs Bazar Sadar",
-      sub: "Zhilanja",
+      city: "Cox's Bazar Sadar",
+      sub: "Jhilongja",
       postalCode: "4701",
     },
     {
-      city: "Coxs Bazar Sadar",
-      sub: "Eidga",
+      city: "Cox's Bazar Sadar",
+      sub: "Eidgaon",
       postalCode: "4702",
     },
     {
-      city: "Gorakghat",
-      sub: "Gorakghat",
+      city: "Maheshkhali",
+      sub: "Maheshkhali",
       postalCode: "4710",
     },
     {
@@ -6683,7 +6659,7 @@ export const postalData: DistrictData = {
     },
     {
       city: "Teknaf",
-      sub: "St.Martin",
+      sub: "St. Martin",
       postalCode: "4762",
     },
     {

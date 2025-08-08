@@ -6,16 +6,17 @@ import {
   getAllDistricts,
   getCitiesByDistrict,
   getSubCitiesByDistrict,
-  search,
-  searchByCity,
-  searchByCode,
-  searchByDistrict,
-  searchBySub,
 } from "../modules/controllers/postal.controller";
 
 const router = Router();
 
 router.use(rateLimiter());
+
+router.use((req, res, next) => {
+  res.setHeader("X-API-Version", "1.0");
+  res.setHeader("X-Response-Time", Date.now());
+  next();
+});
 
 router.get("/districts", getAllDistricts);
 router.get("/districts/:district/cities", getCitiesByDistrict);
@@ -24,14 +25,8 @@ router.get(
   getSubCitiesByDistrict,
 );
 
-router.get("/search", search);
-router.get("/search/district/:district", searchByDistrict);
-router.get("/search/city/:city", searchByCity);
-router.get("/search/sub/:sub", searchBySub);
-router.get("/search/code/:code", searchByCode);
+router.get("/download", downloadData);
 
 router.get("/all", getAllData);
-
-router.get("/download", downloadData);
 
 export { router as postalRoutes };

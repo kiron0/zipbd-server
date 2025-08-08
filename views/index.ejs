@@ -121,7 +121,14 @@
       font-weight: bold;
     }
 
-
+    .info-badge {
+      background-color: #3b82f6;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
 
     .endpoint-header {
       margin-bottom: 0.5rem;
@@ -165,6 +172,7 @@
           <ul class="flex flex-wrap justify-center gap-4 text-sm">
             <li><a href="#overview" class="hover:text-blue-200 transition-colors underline">Overview</a></li>
             <li><a href="#endpoints" class="hover:text-blue-200 transition-colors underline">API Endpoints</a></li>
+            <li><a href="#features" class="hover:text-blue-200 transition-colors underline">Features</a></li>
             <li><a href="#districts" class="hover:text-blue-200 transition-colors underline">Districts</a></li>
             <li><a href="/download" class="hover:text-blue-200 transition-colors underline">Download</a></li>
           </ul>
@@ -174,41 +182,72 @@
   </header>
 
   <div class="container mx-auto px-4 md:px-0 py-8">
-    <section id="overview" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <section id="overview" class="bg-white rounded-lg shadow-lg p-6">
       <h2 class="text-2xl font-bold mb-4 text-gray-800">📋 Overview</h2>
       <p class="text-gray-600 mb-4">
         A comprehensive REST API providing postal code data for all 64 districts of Bangladesh.
-        This API provides accurate and complete postal code information for all districts.
+        This API provides accurate and complete postal code information with hierarchical data structure.
+        All responses are sorted alphabetically (A-Z) for better user experience.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <div class="bg-blue-50 p-4 rounded-lg">
           <h3 class="font-bold text-blue-800">64 Districts</h3>
           <p class="text-blue-600">All official Bangladesh districts</p>
         </div>
         <div class="bg-green-50 p-4 rounded-lg">
-          <h3 class="font-bold text-green-800">Complete Data</h3>
-          <p class="text-green-600">All postal codes included</p>
+          <h3 class="font-bold text-green-800">Sorted Data</h3>
+          <p class="text-green-600">All responses sorted A-Z</p>
         </div>
         <div class="bg-purple-50 p-4 rounded-lg">
           <h3 class="font-bold text-purple-800">REST API</h3>
-          <p class="text-purple-600">Easy to integrate</p>
+          <p class="text-purple-600">Clean hierarchical structure</p>
         </div>
       </div>
     </div>
 
+    <section id="features" class="bg-white rounded-lg shadow-lg p-6 container mx-auto mb-8">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">✨ Features</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">🔍 Hierarchical Structure</h3>
+          <p class="opacity-90 text-sm">Clean RESTful endpoints following district → city → sub-city pattern</p>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">📊 Sorted Responses</h3>
+          <p class="opacity-90 text-sm">All data sorted alphabetically (A-Z) for consistent user experience</p>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">⚡ Fast Performance</h3>
+          <p class="opacity-90 text-sm">Optimized endpoints with rate limiting and proper error handling</p>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">📥 Data Export</h3>
+          <p class="opacity-90 text-sm">Download data in JSON, CSV, XML, and TXT formats</p>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">🛡️ Secure</h3>
+          <p class="opacity-90 text-sm">Rate limiting, input validation, and proper error responses</p>
+        </div>
+        <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-2">📚 Well Documented</h3>
+          <p class="opacity-90 text-sm">Comprehensive documentation with examples and response formats</p>
+        </div>
+      </div>
+    </section>
+
     <section id="endpoints" class="container mx-auto px-4 md:px-0 mb-8">
       <h2 class="text-2xl font-bold mb-4 text-gray-800">🔗 API Endpoints</h2>
 
-      <!-- Hierarchical Data Endpoints -->
+      <!-- Core Hierarchical Endpoints -->
       <div class="mb-8">
-        <h3 class="text-xl font-bold mb-4 text-gray-700 border-b border-gray-200 pb-2">📊 Hierarchical Data Endpoints</h3>
+        <h3 class="text-xl font-bold mb-4 text-gray-700 border-b border-gray-200 pb-2">📊 Core Hierarchical Endpoints</h3>
 
         <div class="endpoint mb-8">
           <div class="endpoint-header">
             <h3 class="font-bold text-lg">Get All Districts</h3>
           </div>
-          <p class="text-gray-600 mb-2">Retrieve a list of all available districts</p>
+          <p class="text-gray-600 mb-2">Retrieve a list of all available districts sorted alphabetically</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
@@ -218,6 +257,7 @@
           <div class="mt-2">
             <span class="success-badge">200 OK</span>
             <span class="warning-badge">JSON Response</span>
+            <span class="info-badge">Sorted A-Z</span>
           </div>
 
           <div class="mt-4">
@@ -234,7 +274,7 @@
               <pre><code class="text-white response-content collapsed">{
   "statusCode": 200,
   "success": true,
-  "data": ["Dhaka", "Chittagong", "Sylhet", "Rajshahi", "Khulna", "Barisal", "Rangpur", "Mymensingh"],
+  "data": ["Barisal", "Chittagong", "Dhaka", "Khulna", "Mymensingh", "Rajshahi", "Rangpur", "Sylhet"],
   "message": "Found 8 districts"
 }</code></pre>
             </div>
@@ -245,7 +285,7 @@
           <div class="endpoint-header">
             <h3 class="font-bold text-lg">Get Cities by District</h3>
           </div>
-          <p class="text-gray-600 mb-2">Retrieve all cities within a specific district</p>
+          <p class="text-gray-600 mb-2">Retrieve all cities within a specific district, sorted alphabetically</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
@@ -255,6 +295,7 @@
           <div class="mt-2">
             <span class="success-badge">200 OK</span>
             <span class="warning-badge">JSON Response</span>
+            <span class="info-badge">Sorted A-Z</span>
           </div>
           <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/districts/dhaka/cities</code></p>
 
@@ -272,7 +313,7 @@
               <pre><code class="text-white response-content collapsed">{
   "statusCode": 200,
   "success": true,
-  "data": ["Dhaka City", "Gazipur", "Narayanganj", "Tangail", "Narsingdi"],
+  "data": ["Dhaka City", "Gazipur", "Narayanganj", "Savar", "Tongi"],
   "message": "Found 5 cities in Dhaka"
 }</code></pre>
             </div>
@@ -281,18 +322,19 @@
 
         <div class="endpoint mb-8">
           <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Get Sub-cities by District and City</h3>
+            <h3 class="font-bold text-lg">Get Sub-cities/Postal Codes</h3>
           </div>
-          <p class="text-gray-600 mb-2">Retrieve all sub-cities within a specific city of a district</p>
+          <p class="text-gray-600 mb-2">Retrieve all sub-cities and postal codes within a specific city, sorted alphabetically by sub-area name</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
-              <a href="/api/v1/districts/dhaka/cities/demra/sub-cities" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/districts/:district/cities/:city/sub-cities</a>
+              <a href="/api/v1/districts/dhaka/cities/dhaka-city/sub-cities" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/districts/:district/cities/:city/sub-cities</a>
             </code>
           </div>
           <div class="mt-2">
             <span class="success-badge">200 OK</span>
             <span class="warning-badge">JSON Response</span>
+            <span class="info-badge">Sorted A-Z</span>
           </div>
           <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/districts/dhaka/cities/dhaka-city/sub-cities</code></p>
 
@@ -313,315 +355,88 @@
   "data": [
     {
       "city": "Dhaka City",
-      "sub": "Gulshan-1",
-      "postalCode": "1212"
+      "sub": "Agargaon",
+      "postalCode": "1207"
     },
     {
       "city": "Dhaka City",
-      "sub": "Banani TSO",
+      "sub": "Banani",
       "postalCode": "1213"
     },
     {
       "city": "Dhaka City",
       "sub": "Dhanmondi",
       "postalCode": "1209"
+    },
+    {
+      "city": "Dhaka City",
+      "sub": "Gulshan-1",
+      "postalCode": "1212"
     }
   ],
-  "message": "Found 3 sub-cities in Dhaka"
+  "message": "Found 4 sub-cities in Dhaka"
 }</code></pre>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Direct Search Endpoints -->
+      <!-- Data Export Endpoint -->
       <div class="mb-8">
-        <h3 class="text-xl font-bold mb-4 text-gray-700 border-b border-gray-200 pb-2">🔍 Direct Search Endpoints</h3>
+        <h3 class="text-xl font-bold mb-4 text-gray-700 border-b border-gray-200 pb-2">📥 Data Export Endpoint</h3>
 
         <div class="endpoint mb-8">
           <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Multi-parameter Search</h3>
+            <h3 class="font-bold text-lg">Download Data</h3>
           </div>
-          <p class="text-gray-600 mb-2">Search with multiple parameters simultaneously. Returns PostalEntry[] format with city, sub, and postalCode for each entry.</p>
+          <p class="text-gray-600 mb-2">Download postal code data in various formats with optional filtering</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
-              <a href="/api/v1/search?district=dhaka&city=gulshan&code=1212" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search?district=dhaka&city=gulshan&code=1212</a>
+              <a href="/api/v1/download?format=json&district=dhaka" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/download</a>
             </code>
           </div>
           <div class="mt-2">
             <span class="success-badge">200 OK</span>
-            <span class="warning-badge">JSON Response</span>
+            <span class="warning-badge">File Download</span>
+            <span class="info-badge">Multiple Formats</span>
           </div>
-
           <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Search Examples:</h4>
+              <p class="text-sm text-gray-500">
+               <span class="font-semibold">For download documentation, use the following link:</span>
+                              <a href="/download" target="_blank" class="text-green-600 hover:text-green-500 transition-colors hover:underline">
+                                        Click here
+                              </a>
+               </p>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold text-gray-700 mb-2">Query Parameters:</h4>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li><strong>format</strong> (optional): <code>json</code>, <code>csv</code>, <code>xml</code>, <code>txt</code> (default: json)</li>
+                <li><strong>district</strong> (optional): Filter by district name</li>
+                <li><strong>city</strong> (optional): Filter by city name (requires district)</li>
+              </ul>
+            </div>
+
+            <h4 class="font-semibold text-gray-700 mb-2 mt-4">Download Examples:</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div class="bg-gray-50 p-3 rounded">
-                <h5 class="font-semibold text-sm mb-2">District Only:</h5>
-                <code class="text-xs">/api/v1/search?district=dhaka</code>
+                <h5 class="font-semibold text-sm mb-2">All Data (JSON):</h5>
+                <code class="text-xs">/api/v1/download?format=json</code>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <h5 class="font-semibold text-sm mb-2">District + City:</h5>
-                <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan</code>
+                <h5 class="font-semibold text-sm mb-2">District Filter (CSV):</h5>
+                <code class="text-xs">/api/v1/download?format=csv&district=dhaka</code>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <h5 class="font-semibold text-sm mb-2">District + City + Sub:</h5>
-                <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan&sub=gulshan-1</code>
+                <h5 class="font-semibold text-sm mb-2">City Filter (XML):</h5>
+                <code class="text-xs">/api/v1/download?format=xml&district=dhaka&city=dhaka-city</code>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <h5 class="font-semibold text-sm mb-2">District + City + Code:</h5>
-                <code class="text-xs">/api/v1/search?district=dhaka&city=gulshan&code=1212</code>
+                <h5 class="font-semibold text-sm mb-2">Plain Text:</h5>
+                <code class="text-xs">/api/v1/download?format=txt&district=dhaka</code>
               </div>
-            </div>
-
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
-            <div class="code-block response-container">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-400">JSON Response</span>
-                <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
-                  <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </div>
-              <pre><code class="text-white response-content collapsed">{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Gulshan",
-      "sub": "Gulshan-1",
-      "postalCode": "1212"
-    },
-    {
-      "city": "Gulshan",
-      "sub": "Gulshan-2",
-      "postalCode": "1213"
-    }
-  ],
-  "message": "Found 2 entries in Dhaka"
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="endpoint mb-8">
-          <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Search by District</h3>
-          </div>
-          <p class="text-gray-600 mb-2">Search postal codes by district name (partial match supported)</p>
-          <div class="code-block">
-            <code class="text-green-400">
-              <span class="text-gray-400">GET</span>
-              <a href="/api/v1/search/district/dhaka" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search/district/:district</a>
-            </code>
-          </div>
-          <div class="mt-2">
-            <span class="success-badge">200 OK</span>
-            <span class="warning-badge">JSON Response</span>
-          </div>
-          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/search/district/dhaka</code></p>
-
-          <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
-            <div class="code-block response-container">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-400">JSON Response</span>
-                <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
-                  <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </div>
-              <pre><code class="text-white response-content collapsed">{
-  "statusCode": 200,
-  "success": true,
-  "data": {
-    "district": "Dhaka",
-    "cities": [
-      {
-        "city": "Dhaka City",
-        "subCities": [
-          {
-            "sub": "Gulshan-1",
-            "postalCode": "1212"
-          },
-          {
-            "sub": "Banani TSO",
-            "postalCode": "1213"
-          },
-          {
-            "sub": "Dhanmondi",
-            "postalCode": "1209"
-          }
-        ]
-      },
-      {
-        "city": "Gazipur",
-        "subCities": [
-          {
-            "sub": "Gazipur Sadar",
-            "postalCode": "1700"
-          }
-        ]
-      }
-    ]
-  },
-  "message": "Found 2 cities in Dhaka"
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="endpoint mb-8">
-          <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Search by City</h3>
-          </div>
-          <p class="text-gray-600 mb-2">Search postal codes by city name (partial match supported)</p>
-          <div class="code-block">
-            <code class="text-green-400">
-              <span class="text-gray-400">GET</span>
-              <a href="/api/v1/search/city/gulshan" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search/city/:city</a>
-            </code>
-          </div>
-          <div class="mt-2">
-            <span class="success-badge">200 OK</span>
-            <span class="warning-badge">JSON Response</span>
-          </div>
-          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/search/city/gulshan</code></p>
-
-          <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
-            <div class="code-block response-container">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-400">JSON Response</span>
-                <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
-                  <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </div>
-              <pre><code class="text-white response-content collapsed">{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Dhaka City",
-      "subCities": [
-        {
-          "sub": "Gulshan-1",
-          "postalCode": "1212"
-        },
-        {
-          "sub": "Gulshan-2",
-          "postalCode": "1213"
-        }
-      ]
-    }
-  ],
-  "message": "Found 1 cities with matching criteria"
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="endpoint mb-8">
-          <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Search by Sub-area</h3>
-          </div>
-          <p class="text-gray-600 mb-2">Search postal codes by sub-area name (partial match supported)</p>
-          <div class="code-block">
-            <code class="text-green-400">
-              <span class="text-gray-400">GET</span>
-              <a href="/api/v1/search/sub/gulshan" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search/sub/:sub</a>
-            </code>
-          </div>
-          <div class="mt-2">
-            <span class="success-badge">200 OK</span>
-            <span class="warning-badge">JSON Response</span>
-          </div>
-          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/search/sub/gulshan</code></p>
-
-          <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
-            <div class="code-block response-container">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-400">JSON Response</span>
-                <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
-                  <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </div>
-              <pre><code class="text-white response-content collapsed">{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Dhaka City",
-      "subCities": [
-        {
-          "sub": "Gulshan-1",
-          "postalCode": "1212"
-        },
-        {
-          "sub": "Gulshan-2",
-          "postalCode": "1213"
-        }
-      ]
-    }
-  ],
-  "message": "Found 1 cities with matching sub-areas"
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="endpoint mb-8">
-          <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Search by Postal Code</h3>
-          </div>
-          <p class="text-gray-600 mb-2">Search by postal code (partial match supported)</p>
-          <div class="code-block">
-            <code class="text-green-400">
-              <span class="text-gray-400">GET</span>
-              <a href="/api/v1/search/code/1212" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/search/code/:code</a>
-            </code>
-          </div>
-          <div class="mt-2">
-            <span class="success-badge">200 OK</span>
-            <span class="warning-badge">JSON Response</span>
-          </div>
-          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/search/code/1212</code></p>
-
-          <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
-            <div class="code-block response-container">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-400">JSON Response</span>
-                <button class="toggle-response text-blue-600 hover:text-blue-800 transition-colors p-1 rounded" onclick="toggleResponse(this)" title="Show full response">
-                  <svg class="w-5 h-5 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </div>
-              <pre><code class="text-white response-content collapsed">{
-  "statusCode": 200,
-  "success": true,
-  "data": [
-    {
-      "city": "Dhaka City",
-      "subCities": [
-        {
-          "sub": "Gulshan-1",
-          "postalCode": "1212"
-        }
-      ]
-    }
-  ],
-  "message": "Found 1 cities with matching postal codes"
-}</code></pre>
             </div>
           </div>
         </div>
@@ -635,7 +450,7 @@
           <div class="endpoint-header">
             <h3 class="font-bold text-lg">Get All Postal Data</h3>
           </div>
-          <p class="text-gray-600 mb-2">Retrieve all postal code data for all districts</p>
+          <p class="text-gray-600 mb-2">Retrieve all postal code data for all districts with pagination support</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
@@ -645,10 +460,19 @@
           <div class="mt-2">
             <span class="success-badge">200 OK</span>
             <span class="warning-badge">JSON Response</span>
+            <span class="info-badge">With Pagination</span>
           </div>
 
           <div class="mt-4">
-            <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
+            <h4 class="font-semibold text-gray-700 mb-2">Query Parameters:</h4>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li><strong>page</strong> (optional): Page number (default: 1)</li>
+                <li><strong>limit</strong> (optional): Items per page (default: 100)</li>
+              </ul>
+            </div>
+
+            <h4 class="font-semibold text-gray-700 mb-2 mt-4">Response Example:</h4>
             <div class="code-block response-container">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-sm text-gray-400">JSON Response</span>
@@ -661,41 +485,34 @@
               <pre><code class="text-white response-content collapsed">{
   "statusCode": 200,
   "success": true,
-  "data": [
-    {
-      "district": "Dhaka",
-      "cities": [
-        {
-          "city": "Dhaka City",
-          "subCities": [
-            {
-              "sub": "Gulshan-1",
-              "postalCode": "1212"
-            },
-            {
-              "sub": "Banani TSO",
-              "postalCode": "1213"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "district": "Chittagong",
-      "cities": [
-        {
-          "city": "Chittagong City",
-          "subCities": [
-            {
-              "sub": "Agrabad",
-              "postalCode": "4100"
-            }
-          ]
-        }
-      ]
+  "data": {
+    "postalData": [
+      {
+        "district": "Dhaka",
+        "cities": [
+          {
+            "city": "Dhaka City",
+            "subCities": [
+              {
+                "sub": "Agargaon",
+                "postalCode": "1207"
+              },
+              {
+                "sub": "Banani",
+                "postalCode": "1213"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 100,
+      "total": 64
     }
-  ],
-  "message": "All postal data retrieved successfully"
+  },
+  "message": "Found 64 districts"
 }</code></pre>
             </div>
           </div>
@@ -709,18 +526,17 @@
           <li><strong>statusCode:</strong> HTTP status code (200 for success)</li>
           <li><strong>success:</strong> Boolean indicating API call success</li>
           <li><strong>data:</strong> Contains the actual postal code information</li>
-          <li><strong>message:</strong> Descriptive message about the search results</li>
+          <li><strong>message:</strong> Descriptive message about the results</li>
         </ul>
         </div>
 
         <div>
-          <h5 class="font-semibold text-blue-800">📋 Data Structure Types</h5>
+          <h5 class="font-semibold text-blue-800">📋 Data Sorting</h5>
         <ul class="text-sm text-blue-700 space-y-1">
-          <li><strong>Hierarchical Endpoints:</strong> Simple arrays or structured data</li>
-          <li><strong>District Search:</strong> Object with district and cities array</li>
-          <li><strong>City/Sub/Code Search:</strong> Array of city objects with subCities</li>
-          <li><strong>Multi-parameter Search:</strong> Array of PostalEntry objects</li>
-          <li><strong>All Data:</strong> Array of district objects with cities</li>
+          <li><strong>Districts:</strong> Sorted alphabetically (A-Z)</li>
+          <li><strong>Cities:</strong> Sorted alphabetically within each district</li>
+          <li><strong>Sub-cities:</strong> Sorted alphabetically by sub-area name</li>
+          <li><strong>All responses:</strong> Consistent A-Z sorting for better UX</li>
         </ul>
         </div>
       </div>
@@ -836,6 +652,7 @@
           <ul class="text-sm text-gray-300 space-y-2">
             <li><a href="#overview" class="hover:text-white transition-colors">Overview</a></li>
             <li><a href="#endpoints" class="hover:text-white transition-colors">API Endpoints</a></li>
+            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
             <li><a href="#districts" class="hover:text-white transition-colors">Available Districts</a></li>
             <li><a href="https://github.com/kiron0/zipbd-server" class="hover:text-white transition-colors">GitHub Repository</a></li>
           </ul>

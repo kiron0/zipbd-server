@@ -23,26 +23,12 @@ export interface DistrictInfo {
   cities: CityInfo[];
 }
 
-export interface SearchParams {
-  district?: string;
-  city?: string;
-  sub?: string;
-  code?: string;
-}
-
 export interface DistrictServiceResponse {
   district: string;
   cities: CityInfo[];
-}
-
-export interface SearchServiceResponse {
-  data: Record<string, any> | null;
-  message: string;
 }
 
 export interface BaseSearchResult {
   district: string;
   subCities: PostalEntry[];
 }
-
-export type FilterResult = PostalEntry | PostalEntry[];
