@@ -1,6 +1,12 @@
 import type { Application, Request, Response } from "express";
 import swaggerJsdoc, { type Options } from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
+import config from "../config";
+
+const CSS_URL = "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css";
+const JS_BUNDLE_URL =
+  "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js";
+const JS_STANDALONE_URL =
+  "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-standalone-preset.js";
 
 const swaggerDefinition = {
   openapi: "3.0.0",
@@ -355,28 +361,47 @@ export function mountSwagger(app: Application): void {
     res.send(swaggerSpec);
   });
 
-  app.use(
-    "/docs",
-    swaggerUi.serve,
-    swaggerUi.setup(
-      swaggerSpec,
-      {
-        customSiteTitle: "ZipBD API Docs",
-        customCss: `
-          .topbar { display: none; }
-          .swagger-ui .info .title small { background: #059669; }
-          .swagger-ui .model-box { border-radius: 8px; }
-          .swagger-ui .opblock-tag { font-size: 1.1rem; }
-          .swagger-ui section.models, .swagger-ui .models { display: none !important; }
-        `,
-        customJs: "/swagger-custom.js",
-      },
-      {
-        docExpansion: "none",
+  app.get("/docs", (_req: Request, res: Response) => {
+    const validatorUrl = config.env === "production" ? "null" : "undefined";
+    const html = `<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZipBD API Docs</title>
+    <link rel="stylesheet" href="${CSS_URL}" />
+    <style>
+      .topbar { display: none; }
+      .swagger-ui .info .title small { background: #059669; }
+      .swagger-ui .model-box { border-radius: 8px; }
+      .swagger-ui .opblock-tag { font-size: 1.1rem; }
+      .swagger-ui section.models, .swagger-ui .models { display: none !important; }
+      .swagger-ui .info a.link { display: none !important; }
+      .swagger-ui .info .base-url { display: none !important; }
+      .swagger-ui .info .url { display: none !important; }
+      body { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="${JS_BUNDLE_URL}"></script>
+    <script src="${JS_STANDALONE_URL}"></script>
+    <script src="/swagger-custom.js"></script>
+    <script>
+      window.ui = SwaggerUIBundle({
+        url: '/docs.json',
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        docExpansion: 'list',
         defaultModelsExpandDepth: -1,
         defaultModelExpandDepth: 0,
         displayRequestDuration: true,
-      },
-    ),
-  );
+        validatorUrl: ${validatorUrl},
+        presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+        layout: 'StandaloneLayout'
+      });
+    </script>
+  </body>
+</html>`;
+    res.type("text/html").send(html);
+  });
 }
