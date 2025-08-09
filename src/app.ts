@@ -4,6 +4,7 @@ import express, { Application, Request, Response } from "express";
 import httpStatus from "http-status";
 import path from "path";
 import { postalRoutes } from "./app/routes/postal.route";
+import config from "./config";
 import { mountSwagger } from "./docs/swagger";
 import { errorHandler } from "./middleware/errorHandler";
 import { sendResponse } from "./utils";
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
+
+app.locals.enableAnalytics = config.env === "production";
 
 app.use("/api/v1", postalRoutes);
 

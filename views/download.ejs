@@ -346,6 +346,9 @@
     </div>
   </footer>
 
+  <% if (enableAnalytics) { %>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <% } %>
   <script>
           document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('a[href^="#"]');
