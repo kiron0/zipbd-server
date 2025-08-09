@@ -1,6 +1,5 @@
 import type { Application, Request, Response } from "express";
 import swaggerJsdoc, { type Options } from "swagger-jsdoc";
-import config from "../config";
 
 const CSS_URL = "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css";
 const JS_BUNDLE_URL =
@@ -362,7 +361,6 @@ export function mountSwagger(app: Application): void {
   });
 
   app.get("/docs", (_req: Request, res: Response) => {
-    const validatorUrl = config.env === "production" ? "null" : "undefined";
     const html = `<!doctype html>
 <html>
   <head>
@@ -395,7 +393,7 @@ export function mountSwagger(app: Application): void {
         defaultModelsExpandDepth: -1,
         defaultModelExpandDepth: 0,
         displayRequestDuration: true,
-        validatorUrl: ${validatorUrl},
+        validatorUrl: null,
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
         layout: 'StandaloneLayout'
       });
