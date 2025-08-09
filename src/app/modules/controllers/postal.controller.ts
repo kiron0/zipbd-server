@@ -46,23 +46,14 @@ export const getSubCitiesByDistrict = catchAsync(async (req, res) => {
 });
 
 export const getAllData = catchAsync(async (req, res) => {
-  const { page = 1, limit = 100 } = req.query;
-
-  const { data, message } = await getAllDataService();
-
-  const pageNum = parseInt(page as string) || 1;
-  const limitNum = parseInt(limit as string) || 100;
+  const { data, metadata, message } = await getAllDataService();
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     data: {
       postalData: data,
-      pagination: {
-        page: pageNum,
-        limit: limitNum,
-        total: data.length,
-      },
+      metadata,
     },
     message,
   });

@@ -21,12 +21,12 @@ function groupByCityAndFormat(entries: PostalEntry[]): CityInfo[] {
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([cityName, cityEntries]) => ({
       city: cityName,
-      subCities: cityEntries
+      postOffices: cityEntries
         .map((entry) => ({
-          sub: entry.sub,
+          postOffice: entry.postOffice,
           postalCode: entry.postalCode,
         }))
-        .sort((a, b) => a.sub.localeCompare(b.sub)),
+        .sort((a, b) => a.postOffice.localeCompare(b.postOffice)),
     }));
 }
 
@@ -44,12 +44,12 @@ async function searchByDistrictBase(
   );
 
   if (!matchedKey) {
-    return { district, subCities: [] };
+    return { district, postOffices: [] };
   }
 
   return {
     district: matchedKey,
-    subCities: postalData[matchedKey as keyof DistrictData],
+    postOffices: postalData[matchedKey as keyof DistrictData],
   };
 }
 
@@ -121,7 +121,7 @@ export async function getSubCitiesByDistrictService(
   const districtEntries = postalData[matchedDistrict as keyof DistrictData];
   const subCities = districtEntries
     .filter((entry) => entry.city.toLowerCase() === lowerCity)
-    .sort((a, b) => a.sub.localeCompare(b.sub));
+    .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
 
   return {
     data: subCities,
@@ -131,6 +131,11 @@ export async function getSubCitiesByDistrictService(
 
 export async function getAllDataService(): Promise<{
   data: DistrictServiceResponse[];
+  metadata: {
+    totalDistricts: number;
+    totalCities: number;
+    totalPostOffices: number;
+  };
   message: string;
 }> {
   const data = Object.entries(postalData)
@@ -139,9 +144,23 @@ export async function getAllDataService(): Promise<{
       district,
       cities: groupByCityAndFormat(subCities),
     }));
+
+  const totalDistricts = data.length;
+  const totalCities = data.reduce((acc, curr) => acc + curr.cities.length, 0);
+  const totalPostOffices = data.reduce(
+    (acc, curr) =>
+      acc + curr.cities.reduce((acc, curr) => acc + curr.postOffices.length, 0),
+    0,
+  );
+
   return {
     data,
-    message: `Found ${data.length} districts`,
+    metadata: {
+      totalDistricts,
+      totalCities,
+      totalPostOffices,
+    },
+    message: `Found ${totalDistricts} districts, ${totalCities} cities, and ${totalPostOffices} post offices`,
   };
 }
 
@@ -159,12 +178,12 @@ export async function downloadDataService(
 
   if (district) {
     const districtResult = await searchByDistrictBase(district);
-    if (districtResult.subCities.length === 0) {
+    if (districtResult.postOffices.length === 0) {
       throw new Error("District not found");
     }
 
     if (city) {
-      const cityEntries = districtResult.subCities.filter(
+      const cityEntries = districtResult.postOffices.filter(
         (entry) =>
           entry.city.toLowerCase() === city.toLowerCase() ||
           entry.city.toLowerCase().includes(city.toLowerCase()),
@@ -178,19 +197,19 @@ export async function downloadDataService(
         .map((entry) => ({
           district: districtResult.district,
           city: entry.city,
-          sub: entry.sub,
+          postOffice: entry.postOffice,
           postalCode: entry.postalCode,
         }))
-        .sort((a, b) => a.sub.localeCompare(b.sub));
+        .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
     } else {
-      dataToExport = districtResult.subCities
+      dataToExport = districtResult.postOffices
         .map((entry) => ({
           district: districtResult.district,
           city: entry.city,
-          sub: entry.sub,
+          postOffice: entry.postOffice,
           postalCode: entry.postalCode,
         }))
-        .sort((a, b) => a.sub.localeCompare(b.sub));
+        .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
     }
   } else {
     dataToExport = Object.entries(postalData)
@@ -198,18 +217,18 @@ export async function downloadDataService(
         entries.map((entry) => ({
           district,
           city: entry.city,
-          sub: entry.sub,
+          postOffice: entry.postOffice,
           postalCode: entry.postalCode,
         })),
       )
-      .sort((a, b) => a.sub.localeCompare(b.sub));
+      .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
   }
 
   const timestamp = new Date().toISOString().split("T")[0];
 
   switch (format.toLowerCase()) {
     case "csv":
-      const csvHeaders = "District,City,Sub-City,Postal Code\n";
+      const csvHeaders = "District,City,Post Office,Postal Code\n";
       const csvData = dataToExport
         .map(
           (entry: any) =>

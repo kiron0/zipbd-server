@@ -1,6 +1,6 @@
 export interface PostalEntry {
   city: string;
-  sub: string;
+  postOffice: string;
   postalCode: string;
 }
 
@@ -9,13 +9,13 @@ export interface DistrictData {
 }
 
 export interface SubDistrictInfo {
-  sub: string;
+  postOffice: string;
   postalCode: string;
 }
 
 export interface CityInfo {
   city: string;
-  subCities: SubDistrictInfo[];
+  postOffices: SubDistrictInfo[];
 }
 
 export interface DistrictInfo {
@@ -30,5 +30,5 @@ export interface DistrictServiceResponse {
 
 export interface BaseSearchResult {
   district: string;
-  subCities: PostalEntry[];
+  postOffices: PostalEntry[];
 }
