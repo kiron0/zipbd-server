@@ -8,14 +8,14 @@ export interface DistrictData {
   [districtName: string]: PostalEntry[];
 }
 
-export interface SubDistrictInfo {
+export interface PostOfficeInfo {
   postOffice: string;
   postalCode: string;
 }
 
 export interface CityInfo {
   city: string;
-  postOffices: SubDistrictInfo[];
+  postOffices: PostOfficeInfo[];
 }
 
 export interface DistrictInfo {

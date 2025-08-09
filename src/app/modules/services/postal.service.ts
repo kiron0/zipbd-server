@@ -119,13 +119,13 @@ export async function getSubCitiesByDistrictService(
   }
 
   const districtEntries = postalData[matchedDistrict as keyof DistrictData];
-  const subCities = districtEntries
+  const postOffices = districtEntries
     .filter((entry) => entry.city.toLowerCase() === lowerCity)
     .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
 
   return {
-    data: subCities,
-    message: `Found ${subCities.length} sub-cities in ${matchedDistrict}`,
+    data: postOffices,
+    message: `Found ${postOffices.length} post offices in ${matchedDistrict}`,
   };
 }
 
@@ -140,9 +140,9 @@ export async function getAllDataService(): Promise<{
 }> {
   const data = Object.entries(postalData)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([district, subCities]) => ({
+    .map(([district, postOffices]) => ({
       district,
-      cities: groupByCityAndFormat(subCities),
+      cities: groupByCityAndFormat(postOffices),
     }));
 
   const totalDistricts = data.length;
@@ -232,7 +232,7 @@ export async function downloadDataService(
       const csvData = dataToExport
         .map(
           (entry: any) =>
-            `"${entry.district}","${entry.city}","${entry.sub}","${entry.postalCode}"`,
+            `"${entry.district}","${entry.city}","${entry.postOffice}","${entry.postalCode}"`,
         )
         .join("\n");
       const csvContent = csvHeaders + csvData;
@@ -253,7 +253,7 @@ export async function downloadDataService(
   <entry>
     <district>${entry.district}</district>
     <city>${entry.city}</city>
-    <sub>${entry.sub}</sub>
+    <postOffice>${entry.postOffice}</postOffice>
     <postalCode>${entry.postalCode}</postalCode>
   </entry>`,
     )
@@ -271,7 +271,7 @@ export async function downloadDataService(
       const txtContent = dataToExport
         .map(
           (entry: any) =>
-            `${entry.district}\t${entry.city}\t${entry.sub}\t${entry.postalCode}`,
+            `${entry.district}\t${entry.city}\t${entry.postOffice}\t${entry.postalCode}`,
         )
         .join("\n");
 

@@ -211,7 +211,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
         <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
           <h3 class="text-xl font-bold mb-2">🔍 Hierarchical Structure</h3>
-          <p class="opacity-90 text-sm">Clean RESTful endpoints following district → city → sub-city pattern</p>
+          <p class="opacity-90 text-sm">Clean RESTful endpoints following district → city → post office pattern</p>
         </div>
         <div class="bg-gradient-to-br from-indigo-400 to-purple-600 text-white p-6 rounded-lg text-center">
           <h3 class="text-xl font-bold mb-2">📊 Sorted Responses</h3>
@@ -322,13 +322,13 @@
 
         <div class="endpoint mb-8">
           <div class="endpoint-header">
-            <h3 class="font-bold text-lg">Get Sub-cities/Postal Codes</h3>
+            <h3 class="font-bold text-lg">Get Post Offices/Postal Codes</h3>
           </div>
-          <p class="text-gray-600 mb-2">Retrieve all sub-cities and postal codes within a specific city, sorted alphabetically by sub-area name</p>
+          <p class="text-gray-600 mb-2">Retrieve all post offices and postal codes within a specific city, sorted alphabetically by post office name</p>
           <div class="code-block">
             <code class="text-green-400">
               <span class="text-gray-400">GET</span>
-              <a href="/api/v1/districts/dhaka/cities/dhaka-city/sub-cities" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/districts/:district/cities/:city/sub-cities</a>
+              <a href="/api/v1/districts/dhaka/cities/dhaka-city/post-offices" target="_blank" class="text-green-400 hover:text-green-300 transition-colors hover:underline">/api/v1/districts/:district/cities/:city/post-offices</a>
             </code>
           </div>
           <div class="mt-2">
@@ -336,7 +336,7 @@
             <span class="warning-badge">JSON Response</span>
             <span class="info-badge">Sorted A-Z</span>
           </div>
-          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/districts/dhaka/cities/dhaka-city/sub-cities</code></p>
+          <p class="text-sm text-gray-500 mt-2">Example: <code>/api/v1/districts/dhaka/cities/dhaka-city/post-offices</code></p>
 
           <div class="mt-4">
             <h4 class="font-semibold text-gray-700 mb-2">Response Example:</h4>
@@ -355,26 +355,26 @@
   "data": [
     {
       "city": "Dhaka City",
-      "sub": "Agargaon",
+      "postOffice": "Agargaon",
       "postalCode": "1207"
     },
     {
       "city": "Dhaka City",
-      "sub": "Banani",
+      "postOffice": "Banani",
       "postalCode": "1213"
     },
     {
       "city": "Dhaka City",
-      "sub": "Dhanmondi",
+      "postOffice": "Dhanmondi",
       "postalCode": "1209"
     },
     {
       "city": "Dhaka City",
-      "sub": "Gulshan-1",
+      "postOffice": "Gulshan-1",
       "postalCode": "1212"
     }
   ],
-  "message": "Found 4 sub-cities in Dhaka"
+  "message": "Found 4 post offices in Dhaka"
 }</code></pre>
             </div>
           </div>
@@ -492,13 +492,13 @@
         "cities": [
           {
             "city": "Dhaka City",
-            "subCities": [
+            "postOffices": [
               {
-                "sub": "Agargaon",
+                "postOffice": "Agargaon",
                 "postalCode": "1207"
               },
               {
-                "sub": "Banani",
+                "postOffice": "Banani",
                 "postalCode": "1213"
               }
             ]
@@ -506,10 +506,10 @@
         ]
       }
     ],
-    "pagination": {
-      "page": 1,
-      "limit": 100,
-      "total": 64
+    "metadata": {
+      "totalDistricts": 64,
+      "totalCities": 490,
+      "totalPostOffices": 1360
     }
   },
   "message": "Found 64 districts"
@@ -535,7 +535,7 @@
         <ul class="text-sm text-blue-700 space-y-1">
           <li><strong>Districts:</strong> Sorted alphabetically (A-Z)</li>
           <li><strong>Cities:</strong> Sorted alphabetically within each district</li>
-          <li><strong>Sub-cities:</strong> Sorted alphabetically by sub-area name</li>
+          <li><strong>Post Offices:</strong> Sorted alphabetically by post office name</li>
           <li><strong>All responses:</strong> Consistent A-Z sorting for better UX</li>
         </ul>
         </div>
