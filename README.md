@@ -12,187 +12,103 @@ A comprehensive REST API providing postal code data for all 64 districts of Bang
 - **Error Handling**: Comprehensive error handling and validation
 - **Documentation**: Interactive API documentation
 
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-git clone https://github.com/kiron0/zipbd-server.git
-cd zipbd-server
-bun install
-```
-
-### Environment Setup
-
-Create a `.env` file in the server directory:
-
-```bash
-touch .env
-```
-
-Add the following environment variables to your `.env` file:
-
-```env
-NODE_ENV=development
-PORT=8000
-```
-
-### Development
-
-```bash
-bun run dev
-```
-
-### Production
-
-```bash
-bun run build
-```
-
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help improve ZipBD:
+We welcome contributions! Please follow the structured workflow below to keep changes easy to review and ship.
 
-### General Contribution Guidelines
+### 1) Development Setup
+- Fork and clone the repo
+- Install deps: `bun install`
+- Create `.env` (see `.env.example`)
+- Start dev server: `bun run dev`
+- Open docs: `http://localhost:8000/docs`
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### 2) Branching & Commits
+- Branch names:
+  - `feat/<short-name>` for features
+  - `fix/<short-name>` for bug fixes
+  - `docs/<short-name>` for docs-only changes
+- Use Conventional Commits where possible, e.g.
+  - `feat(api): add XML download`
+  - `fix(service): guard empty district input`
 
-### 📮 Updating Postal Codes
+### 3) Coding Standards
+- TypeScript strict mode is enabled; avoid `any`
+- Keep functions small and well-named; prefer early returns
+- Format with Prettier: `bun run format`
 
-If you need to update or add postal codes, follow these steps:
+### 4) API Endpoints (for local testing)
+```bash
+# List all districts
+curl http://localhost:8000/api/v1/districts
 
-#### Step 1: Locate the Data File
-The postal code data is stored in the `src/utils/postal-code.ts` file. The data is organized by districts with each district containing an array of postal entries.
+# List cities in a district
+curl http://localhost:8000/api/v1/districts/dhaka/cities
 
-#### Step 2: Understand the Data Structure
-The postal data follows this structure in the `postalData` object:
+# List post offices for a city in a district
+curl http://localhost:8000/api/v1/districts/dhaka/cities/gulshan/post-offices
 
-```typescript
-export const postalData: DistrictData = {
-  "DistrictName": [
-    {
-      city: "City Name",
-      sub: "Sub-area Name",
-      postalCode: "1234"
-    },
-    {
-      city: "Another City",
-      sub: "Another Sub-area",
-      postalCode: "1235"
-    }
-  ]
-}
+# All data with metadata
+curl http://localhost:8000/api/v1/all
+
+# Download (json|csv|xml|txt)
+curl "http://localhost:8000/api/v1/download?format=json&district=dhaka&city=dhaka"
 ```
 
-Each entry contains:
-- `city`: The city name
-- `sub`: The sub-area or specific location name
-- `postalCode`: The 4-digit postal code
+Notes:
+- When a district or city is not found, responses may include a `suggestions: string[]` field with close matches.
+- Interactive docs live at `/docs`; raw OpenAPI at `/docs.json`.
 
-#### Step 3: Add or Update Postal Codes
+### 5) Updating Postal Codes (Data Model)
+Data lives in `src/utils/postal-code.ts` and follows this shape:
 
-**To add a new postal entry to an existing district:**
-- Find the district in the `postalData` object
-- Add a new entry to the district's array:
+```ts
+type PostalEntry = { postOffice: string; postalCode: string };
+type CityInfo = { city: string; postOffices: PostalEntry[] };
+type DistrictInfo = { district: string; cities: CityInfo[] };
 
-```typescript
-"Existing District": [
-  // ... existing entries
+export const postalData: DistrictInfo[] = [
   {
-    city: "New City",
-    sub: "New Sub-area",
-    postalCode: "1234"
-  }
-]
+    district: "Dhaka",
+    cities: [
+      {
+        city: "Dhaka City",
+        postOffices: [
+          { postOffice: "Banani", postalCode: "1213" },
+          { postOffice: "Gulshan-1", postalCode: "1212" },
+        ],
+      },
+    ],
+  },
+];
 ```
 
-**To update an existing postal code:**
-- Find the specific entry in the district array
-- Update the `city`, `sub`, or `postalCode` values as needed
+Guidelines:
+- Keep lists sorted A–Z (districts, cities, post offices)
+- Avoid duplicates and ensure 4‑digit postal codes
+- Use proper casing (e.g., `Gulshan-1`, not `gulshan-1`)
 
-#### Step 4: Validate Your Changes
-After updating the data:
+### 6) Swagger / Docs
+- If you change endpoints or response shapes, update `src/docs/swagger.ts`
+- We hide the global Schemas panel; focus on examples under each operation
 
-1. **Test the API locally:**
-   ```bash
-   bun run dev
-   ```
+### 7) Pull Request Checklist
+- [ ] Branch is up-to-date with `main`
+- [ ] Prettier run: `bun run format`
+- [ ] New/changed endpoints are reflected in `src/docs/swagger.ts`
+- [ ] Data changes validated locally against endpoints above
+- [ ] PR description explains the what/why, and includes screenshots when UI is affected
 
-2. **Test your new postal codes:**
-   ```bash
-   # Test district search
-   curl http://localhost:8000/api/v1/district/your-district-name
+### 8) Getting Help
+- Check existing issues and discussions
+- Open a new issue with clear reproduction or change request
+- Small PRs are easier to review than large ones—iterate if needed
 
-   # Test city search
-   curl http://localhost:8000/api/v1/city/your-city-name
-
-   # Test postal code search
-   curl http://localhost:8000/api/v1/code/your-postal-code
-   ```
-
-3. **Verify search functionality:**
-   - Test partial matching for district/city names
-   - Test exact matching for postal codes
-   - Test multi-parameter searches
-
-#### Step 5: Submit Your Changes
-
-1. **Create a descriptive commit message:**
-   ```bash
-   git commit -m "Add postal codes for [District/City/Area]"
-   ```
-
-2. **Include in your PR description:**
-   - What postal codes you added/updated
-   - Which districts/cities were affected
-   - Any special considerations or notes
-
-#### Step 6: Quality Checklist
-
-Before submitting your PR, ensure:
-
-- [ ] All new postal codes are valid and accurate
-- [ ] Data structure follows the established format (flat array under each district)
-- [ ] API endpoints return correct results for your changes
-- [ ] No duplicate entries exist within the same district
-- [ ] District, city, and sub-area names are properly formatted
-- [ ] Postal codes are in the correct format (4 digits for Bangladesh)
-- [ ] Each entry has all three required fields: `city`, `sub`, and `postalCode`
-- [ ] The `postalData` object structure is maintained
-
-#### Common Issues to Avoid
-
-- **Duplicate entries**: Check existing data within the same district before adding
-- **Incorrect formatting**: Follow the exact TypeScript structure with `city`, `sub`, and `postalCode` fields
-- **Invalid postal codes**: Ensure codes are 4 digits and valid for Bangladesh
-- **Missing data**: Ensure all three required fields (`city`, `sub`, `postalCode`) are present
-- **Wrong data structure**: Don't use nested objects - use flat arrays under each district
-- **Inconsistent naming**: Use consistent naming conventions for districts, cities, and sub-areas
-
-#### Need Help?
-
-If you're unsure about the data structure or need help with your contribution:
-
-1. Check existing data entries for reference
-2. Open an issue describing what you want to add/update
-3. Ask questions in the issue or PR comments
-
-Your contributions help make ZipBD more comprehensive and accurate for everyone! 🚀
+Thank you for contributing and helping make ZipBD better for everyone! 🚀
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/kiron0/zipbd/blob/main/LICENSE) file for details.
-
-## 👨‍💻 Author
-
-**Toufiq Hasan Kiron**
-- Website: [kiron.dev](https://kiron.dev)
-- GitHub: [@kiron0](https://github.com/kiron0)
-- Email: hello@kiron.dev
 
 ## 🙏 Acknowledgments
 
