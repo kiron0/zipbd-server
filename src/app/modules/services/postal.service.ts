@@ -1,33 +1,21 @@
 import type {
   BaseSearchResult,
-  CityInfo,
-  DistrictData,
-  DistrictServiceResponse,
+  DistrictInfo,
   PostalEntry,
+  Response,
 } from "../../../types";
 import { postalData } from "../../../utils";
 
-function groupByCityAndFormat(entries: PostalEntry[]): CityInfo[] {
-  const cityGroups: { [city: string]: PostalEntry[] } = {};
+const districtsArray: DistrictInfo[] = postalData;
 
-  entries.forEach((entry) => {
-    if (!cityGroups[entry.city]) {
-      cityGroups[entry.city] = [];
-    }
-    cityGroups[entry.city].push(entry);
-  });
-
-  return Object.entries(cityGroups)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([cityName, cityEntries]) => ({
-      city: cityName,
-      postOffices: cityEntries
-        .map((entry) => ({
-          postOffice: entry.postOffice,
-          postalCode: entry.postalCode,
-        }))
-        .sort((a, b) => a.postOffice.localeCompare(b.postOffice)),
-    }));
+function flattenDistrict(d: DistrictInfo): PostalEntry[] {
+  return d.cities.flatMap((c) =>
+    c.postOffices.map((po) => ({
+      city: c.city,
+      postOffice: po.postOffice,
+      postalCode: po.postalCode,
+    })),
+  );
 }
 
 async function searchByDistrictBase(
@@ -39,17 +27,17 @@ async function searchByDistrictBase(
 
   const lowerDistrict = district.toLowerCase();
 
-  const matchedKey = Object.keys(postalData).find(
-    (key) => key.toLowerCase() === lowerDistrict,
+  const matched = districtsArray.find(
+    (d) => d.district.toLowerCase() === lowerDistrict,
   );
 
-  if (!matchedKey) {
+  if (!matched) {
     return { district, postOffices: [] };
   }
 
   return {
-    district: matchedKey,
-    postOffices: postalData[matchedKey as keyof DistrictData],
+    district: matched.district,
+    postOffices: flattenDistrict(matched),
   };
 }
 
@@ -57,7 +45,9 @@ export async function getAllDistrictsService(): Promise<{
   data: string[];
   message: string;
 }> {
-  const districts = Object.keys(postalData).sort((a, b) => a.localeCompare(b));
+  const districts: string[] = districtsArray
+    .map((d) => d.district)
+    .sort((a, b) => a.localeCompare(b));
   return {
     data: districts,
     message: `Found ${districts.length} districts`,
@@ -73,26 +63,25 @@ export async function getCitiesByDistrictService(district: string): Promise<{
   }
 
   const lowerDistrict = district.toLowerCase();
-  const matchedKey = Object.keys(postalData).find(
-    (key) => key.toLowerCase() === lowerDistrict,
+  const matched = districtsArray.find(
+    (d) => d.district.toLowerCase() === lowerDistrict,
   );
 
-  if (!matchedKey) {
+  if (!matched) {
     return { data: [], message: "District not found" };
   }
 
-  const districtEntries = postalData[matchedKey as keyof DistrictData];
-  const cities = [...new Set(districtEntries.map((entry) => entry.city))].sort(
-    (a, b) => a.localeCompare(b),
-  );
+  const cities: string[] = matched.cities
+    .map((c) => c.city)
+    .sort((a, b) => a.localeCompare(b));
 
   return {
     data: cities,
-    message: `Found ${cities.length} cities in ${matchedKey}`,
+    message: `Found ${cities.length} cities in ${matched.district}`,
   };
 }
 
-export async function getSubCitiesByDistrictService(
+export async function getPostOfficesByDistrictService(
   district: string,
   city: string,
 ): Promise<{
@@ -110,46 +99,43 @@ export async function getSubCitiesByDistrictService(
   const lowerDistrict = district.trim().toLowerCase();
   const lowerCity = city.trim().toLowerCase();
 
-  const matchedDistrict = Object.keys(postalData).find(
-    (key) => key.toLowerCase() === lowerDistrict,
+  const matchedDistrict = districtsArray.find(
+    (d) => d.district.toLowerCase() === lowerDistrict,
   );
 
   if (!matchedDistrict) {
     return { data: [], message: "District not found" };
   }
 
-  const districtEntries = postalData[matchedDistrict as keyof DistrictData];
-  const postOffices = districtEntries
-    .filter((entry) => entry.city.toLowerCase() === lowerCity)
+  const cityInfo = matchedDistrict.cities.find(
+    (c) => c.city.toLowerCase() === lowerCity,
+  );
+  if (!cityInfo) {
+    return { data: [], message: "City not found in the specified district" };
+  }
+  const postOffices: PostalEntry[] = cityInfo.postOffices
+    .map((po) => ({
+      city: cityInfo.city,
+      postOffice: po.postOffice,
+      postalCode: po.postalCode,
+    }))
     .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
 
   return {
     data: postOffices,
-    message: `Found ${postOffices.length} post offices in ${matchedDistrict}`,
+    message: `Found ${postOffices.length} post offices in ${matchedDistrict.district}`,
   };
 }
 
-export async function getAllDataService(): Promise<{
-  data: DistrictServiceResponse[];
-  metadata: {
-    totalDistricts: number;
-    totalCities: number;
-    totalPostOffices: number;
-  };
-  message: string;
-}> {
-  const data = Object.entries(postalData)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([district, postOffices]) => ({
-      district,
-      cities: groupByCityAndFormat(postOffices),
-    }));
+export async function getAllDataService(): Promise<Response> {
+  const data = [...districtsArray].sort((a, b) =>
+    a.district.localeCompare(b.district),
+  );
 
   const totalDistricts = data.length;
-  const totalCities = data.reduce((acc, curr) => acc + curr.cities.length, 0);
+  const totalCities = data.reduce((acc, d) => acc + d.cities.length, 0);
   const totalPostOffices = data.reduce(
-    (acc, curr) =>
-      acc + curr.cities.reduce((acc, curr) => acc + curr.postOffices.length, 0),
+    (acc, d) => acc + d.cities.reduce((a, c) => a + c.postOffices.length, 0),
     0,
   );
 
@@ -212,14 +198,16 @@ export async function downloadDataService(
         .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
     }
   } else {
-    dataToExport = Object.entries(postalData)
-      .flatMap(([district, entries]) =>
-        entries.map((entry) => ({
-          district,
-          city: entry.city,
-          postOffice: entry.postOffice,
-          postalCode: entry.postalCode,
-        })),
+    dataToExport = districtsArray
+      .flatMap((d) =>
+        d.cities.flatMap((c) =>
+          c.postOffices.map((po) => ({
+            district: d.district,
+            city: c.city,
+            postOffice: po.postOffice,
+            postalCode: po.postalCode,
+          })),
+        ),
       )
       .sort((a, b) => a.postOffice.localeCompare(b.postOffice));
   }

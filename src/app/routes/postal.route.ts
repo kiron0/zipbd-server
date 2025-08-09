@@ -5,7 +5,7 @@ import {
   getAllData,
   getAllDistricts,
   getCitiesByDistrict,
-  getSubCitiesByDistrict,
+  getPostOfficesByDistrict,
 } from "../modules/controllers/postal.controller";
 
 const router = Router();
@@ -21,8 +21,8 @@ router.use((req, res, next) => {
 router.get("/districts", getAllDistricts);
 router.get("/districts/:district/cities", getCitiesByDistrict);
 router.get(
-  "/districts/:district/cities/:city/sub-cities",
-  getSubCitiesByDistrict,
+  "/districts/:district/cities/:city/post-offices",
+  getPostOfficesByDistrict,
 );
 
 router.get("/download", downloadData);

@@ -23,9 +23,14 @@ export interface DistrictInfo {
   cities: CityInfo[];
 }
 
-export interface DistrictServiceResponse {
-  district: string;
-  cities: CityInfo[];
+export interface Response {
+  data: DistrictInfo[];
+  metadata: {
+    totalDistricts: number;
+    totalCities: number;
+    totalPostOffices: number;
+  };
+  message: string;
 }
 
 export interface BaseSearchResult {

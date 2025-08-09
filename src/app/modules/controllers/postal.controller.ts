@@ -5,7 +5,7 @@ import {
   getAllDataService,
   getAllDistrictsService,
   getCitiesByDistrictService,
-  getSubCitiesByDistrictService,
+  getPostOfficesByDistrictService,
 } from "../services/postal.service";
 
 export const getAllDistricts = catchAsync(async (req, res) => {
@@ -27,20 +27,23 @@ export const getCitiesByDistrict = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    data,
+    ...(data.length > 0 ? { data } : {}),
     message,
   });
 });
 
-export const getSubCitiesByDistrict = catchAsync(async (req, res) => {
+export const getPostOfficesByDistrict = catchAsync(async (req, res) => {
   const { district, city } = req.params;
 
-  const { data, message } = await getSubCitiesByDistrictService(district, city);
+  const { data, message } = await getPostOfficesByDistrictService(
+    district,
+    city,
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    data,
+    ...(data.length > 0 ? { data } : {}),
     message,
   });
 });
