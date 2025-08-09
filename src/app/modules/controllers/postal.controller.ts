@@ -22,12 +22,14 @@ export const getAllDistricts = catchAsync(async (req, res) => {
 export const getCitiesByDistrict = catchAsync(async (req, res) => {
   const { district } = req.params;
 
-  const { data, message } = await getCitiesByDistrictService(district);
+  const { data, message, suggestions } =
+    await getCitiesByDistrictService(district);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     ...(data.length > 0 ? { data } : {}),
+    ...(suggestions && suggestions.length ? { suggestions } : {}),
     message,
   });
 });
@@ -35,7 +37,7 @@ export const getCitiesByDistrict = catchAsync(async (req, res) => {
 export const getPostOfficesByDistrict = catchAsync(async (req, res) => {
   const { district, city } = req.params;
 
-  const { data, message } = await getPostOfficesByDistrictService(
+  const { data, message, suggestions } = await getPostOfficesByDistrictService(
     district,
     city,
   );
@@ -44,6 +46,7 @@ export const getPostOfficesByDistrict = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     ...(data.length > 0 ? { data } : {}),
+    ...(suggestions && suggestions.length ? { suggestions } : {}),
     message,
   });
 });

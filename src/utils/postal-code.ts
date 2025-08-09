@@ -596,7 +596,7 @@ export const postalData: Response["data"] = [
     ],
   },
   {
-    district: "Bogra",
+    district: "Bogura",
     cities: [
       {
         city: "Alamdighi",
@@ -616,14 +616,14 @@ export const postalData: Response["data"] = [
         ],
       },
       {
-        city: "Bogra Sadar",
+        city: "Bogura Sadar",
         postOffices: [
           {
-            postOffice: "Bogra Cantonment",
+            postOffice: "Bogura Cantonment",
             postalCode: "5801",
           },
           {
-            postOffice: "Bogra Sadar",
+            postOffice: "Bogura Sadar",
             postalCode: "5800",
           },
         ],

@@ -4,6 +4,7 @@ import express, { Application, Request, Response } from "express";
 import httpStatus from "http-status";
 import path from "path";
 import { postalRoutes } from "./app/routes/postal.route";
+import { mountSwagger } from "./docs/swagger";
 import { errorHandler } from "./middleware/errorHandler";
 import { sendResponse } from "./utils";
 
@@ -25,6 +26,8 @@ app.get("/", async (req: Request, res: Response) => {
 app.get("/download", async (req: Request, res: Response) => {
   res.render("download");
 });
+
+mountSwagger(app);
 
 app.use((req: Request, res: Response) => {
   sendResponse(res, {

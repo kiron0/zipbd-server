@@ -4,7 +4,7 @@ import type {
   PostalEntry,
   Response,
 } from "../../../types";
-import { postalData } from "../../../utils";
+import { getSuggestions, postalData } from "../../../utils";
 
 const districtsArray: DistrictInfo[] = postalData;
 
@@ -57,6 +57,7 @@ export async function getAllDistrictsService(): Promise<{
 export async function getCitiesByDistrictService(district: string): Promise<{
   data: string[];
   message: string;
+  suggestions?: string[];
 }> {
   if (!district || typeof district !== "string") {
     throw new Error("District is required");
@@ -68,7 +69,13 @@ export async function getCitiesByDistrictService(district: string): Promise<{
   );
 
   if (!matched) {
-    return { data: [], message: "District not found" };
+    const districtNames = districtsArray.map((d) => d.district);
+    const suggestions = getSuggestions(district, districtNames);
+    return {
+      data: [],
+      message: "District not found",
+      ...(suggestions.length ? { suggestions } : {}),
+    };
   }
 
   const cities: string[] = matched.cities
@@ -87,6 +94,7 @@ export async function getPostOfficesByDistrictService(
 ): Promise<{
   data: PostalEntry[];
   message: string;
+  suggestions?: string[];
 }> {
   if (!district || typeof district !== "string" || !district.trim()) {
     throw new Error("District is required");
@@ -104,14 +112,26 @@ export async function getPostOfficesByDistrictService(
   );
 
   if (!matchedDistrict) {
-    return { data: [], message: "District not found" };
+    const districtNames = districtsArray.map((d) => d.district);
+    const suggestions = getSuggestions(district, districtNames);
+    return {
+      data: [],
+      message: "District not found",
+      ...(suggestions.length ? { suggestions } : {}),
+    };
   }
 
   const cityInfo = matchedDistrict.cities.find(
     (c) => c.city.toLowerCase() === lowerCity,
   );
   if (!cityInfo) {
-    return { data: [], message: "City not found in the specified district" };
+    const cityNames = matchedDistrict.cities.map((c) => c.city);
+    const suggestions = getSuggestions(city, cityNames);
+    return {
+      data: [],
+      message: "City not found in the specified district",
+      ...(suggestions.length ? { suggestions } : {}),
+    };
   }
   const postOffices: PostalEntry[] = cityInfo.postOffices
     .map((po) => ({
@@ -123,7 +143,7 @@ export async function getPostOfficesByDistrictService(
 
   return {
     data: postOffices,
-    message: `Found ${postOffices.length} post offices in ${matchedDistrict.district}`,
+    message: `Found ${postOffices.length} post offices in ${matchedDistrict.district}, ${cityInfo.city}`,
   };
 }
 

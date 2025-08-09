@@ -7,7 +7,10 @@ const startServer = async () => {
     const server = createServer(app);
     server.listen(config.port, () => {
       console.log(`🌐 Server running on port ${config.port} 🔥`);
-      console.log(`📖 API Documentation: http://localhost:${config.port}`);
+      console.log(
+        `📖 API Documentation (Swagger UI): http://localhost:${config.port}/docs`,
+      );
+      console.log(`📄 OpenAPI JSON: http://localhost:${config.port}/docs.json`);
       console.log(`🌍 Environment: ${config.env}`);
     });
   } catch (error) {
